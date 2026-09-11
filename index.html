@@ -1,876 +1,2444 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0,
+maximum-scale=1.0, user-scalable=no">
 
 <title>MARVEL Language Academy & Marvel Charity</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+rel="stylesheet">
+
 <style>
+
+/* ================= BASIC ================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html{
     width:100%;
     height:100%;
-    overflow:hidden;
-    background:#050505;
-    color:white;
 }
 
-/* TOP NAVIGATION */
+body{
+    width:100%;
+    height:100%;
+    margin:0;
+    background:#050505;
+    color:white;
+    font-family:Inter,Arial,sans-serif;
+    overflow:hidden;
+}
+
+button,
+a,
+label,
+input,
+select,
+textarea{
+    touch-action:manipulation;
+}
+
+/* ================= NAV ================= */
+
 nav{
     position:fixed;
     top:0;
     left:0;
+
     width:100%;
-    height:65px;
-    z-index:1000;
-    background:rgba(5,5,5,.96);
+    height:70px;
+
+    background:rgba(5,5,5,.98);
+
     border-bottom:1px solid #d4af37;
+
     display:flex;
     align-items:center;
-    justify-content:center;
-    gap:8px;
-    padding:8px;
+
+    justify-content:flex-start;
+
+    gap:5px;
+
+    padding:0 8px;
+
+    z-index:9999;
+
     overflow-x:auto;
+    overflow-y:hidden;
+
+    white-space:nowrap;
+
+    -webkit-overflow-scrolling:touch;
+}
+
+nav::-webkit-scrollbar{
+    display:none;
 }
 
 nav button{
-    flex-shrink:0;
-    background:transparent;
-    color:#ddd;
-    border:1px solid #333;
-    padding:9px 13px;
-    border-radius:20px;
-    cursor:pointer;
-    font-size:12px;
-    transition:.3s;
-}
+    flex:0 0 auto;
 
-nav button:hover{
-    color:#d4af37;
-    border-color:#d4af37;
+    background:transparent;
+
+    color:#ddd;
+
+    border:none;
+
+    padding:11px 13px;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+    min-height:42px;
+
+    position:relative;
+
+    z-index:10000;
 }
 
 nav button.active{
-    background:#d4af37;
-    color:#050505;
-    border-color:#d4af37;
+    background:#151515;
+    color:#d4af37;
 }
 
-/* SLIDER */
+nav button:active{
+    transform:scale(.96);
+}
+
+/* ================= SLIDER ================= */
+
 .slider{
     width:100%;
-    height:100vh;
+    height:100%;
+
     display:flex;
-    transition:transform .6s ease;
+
+    transition:transform .55s ease;
+
+    will-change:transform;
 }
 
 .page{
-    flex:0 0 100%;
+    min-width:100%;
     width:100%;
-    height:100vh;
+    height:100%;
+
     overflow-y:auto;
-    padding:95px 20px 40px;
+    overflow-x:hidden;
+
+    padding-top:92px;
+
+    /*
+      EXTRA BOTTOM SPACE
+      so Android navigation bar
+      does not cover buttons
+    */
+    padding-right:18px;
+    padding-left:18px;
+    padding-bottom:170px;
+
     display:flex;
-    flex-direction:column;
-    align-items:center;
+    justify-content:center;
+
+    -webkit-overflow-scrolling:touch;
 }
 
-.container{
+.page-inner{
     width:100%;
-    max-width:900px;
-    margin:auto;
+    max-width:1000px;
+    height:max-content;
 }
 
-/* TEXT */
-h1{
-    color:#d4af37;
-    font-size:48px;
-    text-align:center;
-    margin-bottom:20px;
-}
+/* ================= TEXT ================= */
 
-h2{
-    color:#d4af37;
-    font-size:32px;
-    text-align:center;
-    margin-bottom:20px;
-}
-
+h1,
+h2,
 h3{
-    color:#d4af37;
-    margin-bottom:12px;
+    font-family:Cinzel,serif;
 }
 
-p{
-    color:#ccc;
-    line-height:1.7;
+.logo-text{
     text-align:center;
+
+    font-family:Cinzel,serif;
+
+    color:#d4af37;
+
+    font-size:clamp(38px,9vw,75px);
+
+    letter-spacing:5px;
+
+    margin-top:20px;
 }
 
-/* HOME */
+.subtitle{
+    text-align:center;
+
+    color:#999;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    margin-top:8px;
+}
+
+/* ================= HOME ================= */
+
 .hero{
     text-align:center;
-    padding:35px 10px;
+    padding-top:10px;
 }
 
 .hero h1{
-    font-size:55px;
-    letter-spacing:2px;
-}
-
-.hero .subtitle{
     color:#d4af37;
-    font-size:20px;
-    margin-bottom:20px;
+
+    font-size:clamp(30px,7vw,58px);
+
+    margin-top:22px;
+    margin-bottom:12px;
 }
 
 .hero p{
-    max-width:700px;
+    max-width:720px;
+
     margin:auto;
+
+    color:#aaa;
+
+    line-height:1.8;
+
+    font-size:15px;
 }
 
-/* CARDS */
+/* ================= BUTTON AREA ================= */
+
+.home-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    /*
+      BUTTONS STAY UP
+      AND HAVE SPACE BELOW
+    */
+    margin-top:14px;
+
+    margin-bottom:35px;
+
+    position:relative;
+
+    z-index:500;
+
+    pointer-events:auto;
+}
+
+.main-btn,
+.outline-btn{
+
+    min-height:52px;
+
+    padding:13px 22px;
+
+    border-radius:11px;
+
+    font-weight:800;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    position:relative;
+
+    z-index:501;
+
+    pointer-events:auto;
+
+    transition:.2s;
+}
+
+.main-btn{
+
+    background:#d4af37;
+
+    color:#050505;
+
+    border:1px solid #d4af37;
+}
+
+.outline-btn{
+
+    background:#050505;
+
+    color:#d4af37;
+
+    border:1px solid #d4af37;
+}
+
+.main-btn:active,
+.outline-btn:active{
+
+    transform:scale(.96);
+}
+
+/* ================= CARDS ================= */
+
 .cards{
+
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
-    width:100%;
-    margin-top:25px;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:18px;
+
+    margin-top:24px;
+
 }
 
 .card{
+
     background:#0d0d0d;
-    border:1px solid #333;
-    border-radius:20px;
-    padding:28px 20px;
-    text-align:center;
-    cursor:pointer;
-    transition:.3s;
-}
 
-.card:hover{
-    border-color:#d4af37;
-    transform:translateY(-5px);
-    box-shadow:0 0 25px rgba(212,175,55,.12);
-}
+    border:1px solid #292929;
 
-.card .icon{
-    font-size:42px;
-    margin-bottom:15px;
+    border-radius:18px;
+
+    padding:24px;
+
+    min-height:150px;
+
 }
 
 .card h3{
-    font-size:22px;
+
+    color:#d4af37;
+
+    font-size:23px;
+
+    margin-bottom:12px;
 }
 
-/* INFO BOX */
-.info-box{
+.card p{
+
+    color:#aaa;
+
+    line-height:1.8;
+
+    font-size:15px;
+}
+
+/* ================= SECTION ================= */
+
+.section-title{
+
+    text-align:center;
+
+    color:#d4af37;
+
+    font-size:clamp(26px,6vw,38px);
+
+    margin-bottom:12px;
+}
+
+.section-description{
+
+    max-width:720px;
+
+    margin:0 auto 20px;
+
+    text-align:center;
+
+    color:#aaa;
+
+    line-height:1.8;
+
+    font-size:15px;
+}
+
+/* ================= LEADER ================= */
+
+.leader-box{
+
+    max-width:650px;
+
+    margin:25px auto;
+
+    padding:28px;
+
     background:#0d0d0d;
-    border:1px solid #333;
-    border-radius:20px;
-    padding:30px;
-    margin-top:20px;
-    width:100%;
-}
 
-.info-box p{
-    margin:8px 0;
-}
-
-.gold{
-    color:#d4af37;
-    font-weight:bold;
-}
-
-/* BUTTONS */
-.controls{
-    display:flex;
-    justify-content:space-between;
-    width:100%;
-    max-width:900px;
-    margin-top:30px;
-    gap:15px;
-}
-
-.controls button,
-.main-btn{
-    background:#d4af37;
-    color:#050505;
-    border:none;
-    padding:13px 25px;
-    border-radius:10px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.controls button:hover,
-.main-btn:hover{
-    background:#f0d36b;
-    transform:scale(1.03);
-}
-
-.controls .back{
-    background:#171717;
-    color:#d4af37;
     border:1px solid #d4af37;
-}
 
-/* SOCIAL */
-.socials{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:12px;
-    margin-top:20px;
-}
+    border-radius:18px;
 
-.socials a{
-    text-decoration:none;
-    color:#d4af37;
-    border:1px solid #d4af37;
-    padding:11px 16px;
-    border-radius:10px;
-    transition:.3s;
-}
-
-.socials a:hover{
-    background:#d4af37;
-    color:#050505;
-}
-
-/* MODAL */
-.modal{
-    position:fixed;
-    inset:0;
-    z-index:3000;
-    background:rgba(0,0,0,.85);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-}
-
-.modal.show{
-    display:flex;
-}
-
-.modal-box{
-    width:100%;
-    max-width:600px;
-    background:#0d0d0d;
-    border:1px solid #d4af37;
-    border-radius:22px;
-    padding:35px 25px;
     text-align:center;
 }
 
-.modal-box h2{
+.leader-box h2{
+
+    color:#d4af37;
+
+    font-size:25px;
+
+    margin-bottom:8px;
+}
+
+.leader-role{
+
+    color:#aaa;
+
+    margin-bottom:18px;
+}
+
+.info{
+
+    padding:14px;
+
+    border-bottom:1px solid #252525;
+
+    color:#ddd;
+
+    line-height:1.6;
+}
+
+.info strong{
+
+    color:#d4af37;
+}
+
+/* ================= DONATE ================= */
+
+.donate-box{
+
+    max-width:650px;
+
+    margin:25px auto;
+
+    padding:25px;
+
+    background:#0d0d0d;
+
+    border:1px solid #d4af37;
+
+    border-radius:18px;
+}
+
+.donate-item{
+
+    padding:16px 0;
+
+    border-bottom:1px solid #252525;
+
+    color:#ddd;
+
+    line-height:1.7;
+}
+
+.donate-item strong{
+
+    color:#d4af37;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-list{
+
+    max-width:650px;
+
+    margin:20px auto;
+}
+
+.contact-item{
+
+    background:#0d0d0d;
+
+    border:1px solid #252525;
+
+    border-radius:12px;
+
+    padding:16px;
+
+    margin:9px 0;
+
+    color:#ddd;
+}
+
+.contact-item strong{
+
+    color:#d4af37;
+}
+
+.contact-item a{
+
+    color:#ddd;
+
+    text-decoration:none;
+}
+
+.contact-item a:active{
+
+    color:#d4af37;
+}
+
+/* ================= REGISTRATION ================= */
+
+.registration-box{
+
+    max-width:850px;
+
+    margin:0 auto;
+
+    padding:15px;
+
+    background:#0b0b0b;
+
+    border:1px solid #292929;
+
+    border-radius:20px;
+}
+
+.form-section{
+
+    background:#080808;
+
+    border:1px solid #252525;
+
+    border-radius:15px;
+
+    padding:18px;
+
     margin-bottom:15px;
 }
 
-.modal-box p{
-    margin-bottom:20px;
+.form-section-title{
+
+    color:#d4af37;
+
+    font-family:Cinzel,serif;
+
+    font-size:19px;
+
+    margin-bottom:15px;
 }
 
-.close{
-    background:#d4af37;
-    color:#050505;
-    border:0;
-    padding:12px 25px;
-    border-radius:10px;
-    font-weight:bold;
-    cursor:pointer;
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:14px;
 }
 
-/* FOOTER */
-footer{
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.form-group.full{
+
+    grid-column:1/-1;
+}
+
+.form-group label{
+
+    color:#ccc;
+
+    font-size:13px;
+
+    margin-bottom:7px;
+}
+
+.form-group label span{
+
+    color:#d4af37;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+
+    width:100%;
+
+    background:#111;
+
+    color:white;
+
+    border:1px solid #333;
+
+    border-radius:9px;
+
+    padding:13px;
+
+    outline:none;
+
+    font-family:Inter,Arial,sans-serif;
+
+    font-size:14px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+
+    border-color:#d4af37;
+}
+
+.form-group textarea{
+
+    min-height:110px;
+
+    resize:vertical;
+}
+
+/* ================= PHOTO ================= */
+
+.photo-upload{
+
     text-align:center;
-    color:#777;
-    font-size:12px;
-    margin-top:30px;
-    padding-bottom:20px;
+
+    padding:8px 0;
 }
 
-/* MOBILE */
+.photo-preview{
+
+    width:150px;
+
+    height:180px;
+
+    margin:0 auto 15px;
+
+    border:2px dashed #d4af37;
+
+    border-radius:12px;
+
+    background:#070707;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+    color:#777;
+}
+
+.photo-preview span{
+
+    font-size:40px;
+
+    margin-bottom:8px;
+}
+
+.photo-preview small{
+
+    color:#777;
+}
+
+.photo-preview img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+}
+
+.upload-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:50px;
+
+    padding:12px 24px;
+
+    background:#d4af37;
+
+    color:#050505;
+
+    border-radius:10px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    position:relative;
+
+    z-index:100;
+
+}
+
+.registration-note{
+
+    color:#777;
+
+    font-size:12px;
+
+    line-height:1.5;
+
+    margin-top:9px;
+}
+
+/* ================= REGISTER ================= */
+
+.register-submit{
+
+    width:100%;
+
+    min-height:55px;
+
+    background:#d4af37;
+
+    color:#050505;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    font-size:15px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    position:relative;
+
+    z-index:500;
+
+}
+
+.register-submit:active{
+
+    transform:scale(.98);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+    text-align:center;
+
+    color:#666;
+
+    margin-top:25px;
+
+    padding:20px 0;
+
+    border-top:1px solid #222;
+
+    font-size:12px;
+}
+
+/* ================= MOBILE ================= */
+
 @media(max-width:650px){
 
     nav{
-        justify-content:flex-start;
+
+        height:66px;
+
+        gap:3px;
+
+        padding:0 6px;
     }
 
     nav button{
+
         font-size:11px;
-        padding:8px 11px;
+
+        padding:10px 11px;
     }
 
     .page{
-        padding:90px 15px 30px;
+
+        padding-top:84px;
+
+        /*
+          IMPORTANT:
+          extra bottom area for
+          Android navigation buttons
+        */
+        padding-bottom:190px;
+
+        padding-left:13px;
+        padding-right:13px;
     }
 
-    h1{
-        font-size:36px;
+    .logo-text{
+
+        font-size:43px;
+
+        letter-spacing:3px;
+
+        margin-top:12px;
+    }
+
+    .subtitle{
+
+        font-size:11px;
     }
 
     .hero h1{
-        font-size:40px;
+
+        font-size:32px;
+
+        margin-top:20px;
     }
 
-    h2{
-        font-size:28px;
+    .hero p{
+
+        font-size:14px;
     }
 
     .cards{
+
+        grid-template-columns:1fr;
+
+        gap:14px;
+
+        margin-top:20px;
+    }
+
+    .card{
+
+        padding:22px;
+
+        min-height:auto;
+    }
+
+    .card h3{
+
+        font-size:22px;
+    }
+
+    .section-title{
+
+        font-size:27px;
+    }
+
+    .section-description{
+
+        font-size:14px;
+    }
+
+    .home-buttons{
+
+        margin-top:10px;
+
+        margin-bottom:45px;
+
+        gap:12px;
+    }
+
+    .main-btn,
+    .outline-btn{
+
+        min-height:54px;
+
+        padding:13px 19px;
+
+        font-size:13px;
+    }
+
+    .form-grid{
+
         grid-template-columns:1fr;
     }
 
-    .controls button{
-        padding:12px 18px;
+    .form-group.full{
+
+        grid-column:auto;
     }
 
-    .info-box{
-        padding:22px 15px;
+    .registration-box{
+
+        padding:11px;
     }
+
+    .form-section{
+
+        padding:14px;
+    }
+
+    .form-section-title{
+
+        font-size:17px;
+    }
+
 }
+
+/* ================= VERY SMALL PHONES ================= */
+
+@media(max-width:380px){
+
+    nav button{
+
+        padding:9px 9px;
+
+        font-size:10px;
+    }
+
+    .page{
+
+        padding-bottom:210px;
+    }
+
+    .main-btn,
+    .outline-btn{
+
+        width:100%;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
+
+<!-- ================================================= -->
 <!-- NAVIGATION -->
-<nav>
-    <button onclick="goTo(0)" id="nav0">Home</button>
-    <button onclick="goTo(1)" id="nav1">Academy</button>
-    <button onclick="goTo(2)" id="nav2">Charity</button>
-    <button onclick="goTo(3)" id="nav3">Leader</button>
-    <button onclick="goTo(4)" id="nav4">About</button>
-    <button onclick="goTo(5)" id="nav5">Donate</button>
-    <button onclick="goTo(6)" id="nav6">Contact</button>
+<!-- ================================================= -->
+
+<nav id="navbar">
+
+<button class="active"
+onclick="goToPage(0)">
+HOME
+</button>
+
+<button onclick="goToPage(1)">
+ACADEMY
+</button>
+
+<button onclick="goToPage(2)">
+CHARITY
+</button>
+
+<button onclick="goToPage(3)">
+LEADER
+</button>
+
+<button onclick="goToPage(4)">
+ABOUT
+</button>
+
+<button onclick="goToPage(5)">
+DONATE
+</button>
+
+<button onclick="goToPage(6)">
+CONTACT
+</button>
+
+<button onclick="goToPage(7)">
+REGISTER
+</button>
+
 </nav>
 
 
+<!-- ================================================= -->
 <!-- SLIDER -->
+<!-- ================================================= -->
+
 <div class="slider" id="slider">
 
-    <!-- HOME -->
-    <section class="page">
 
-        <div class="container hero">
+<!-- ================================================= -->
+<!-- HOME -->
+<!-- ================================================= -->
 
-            <h1>MARVEL</h1>
+<section class="page">
 
-            <div class="subtitle">
-                Language Academy & Marvel Charity
-            </div>
+<div class="page-inner">
 
-            <p>
-                Welcome to MARVEL Language Academy & Marvel Charity.
-                A place for learning, growth, education and helping others.
-            </p>
+<div class="hero">
 
-            <div class="cards">
+<div class="logo-text">
+MARVEL
+</div>
 
-                <div class="card" onclick="openModal('academyModal')">
-                    <div class="icon">🎓</div>
-                    <h3>Language Academy</h3>
-                    <p>Learn languages and improve your communication skills.</p>
-                </div>
+<div class="subtitle">
+LANGUAGE ACADEMY & CHARITY
+</div>
 
-                <div class="card" onclick="openModal('charityModal')">
-                    <div class="icon">❤️</div>
-                    <h3>Marvel Charity</h3>
-                    <p>Supporting people and building a better community.</p>
-                </div>
+<h1>
+Learn. Grow. Give.
+</h1>
 
-            </div>
+<p>
+Welcome to MARVEL Language Academy & Marvel Charity.
+A place where education, communication and community
+support come together to create a better future.
+</p>
 
-            <div class="controls">
-                <button class="next" onclick="goTo(1)">
-                    Start →
-                </button>
-            </div>
 
-            <footer>
-                © 2026 MARVEL Language Academy & Marvel Charity.
-                All rights reserved.
-            </footer>
+<div class="home-buttons">
 
-        </div>
+<button class="main-btn"
+onclick="goToPage(1)">
+ACADEMY
+</button>
 
-    </section>
+<button class="outline-btn"
+onclick="goToPage(2)">
+CHARITY
+</button>
 
+<button class="outline-btn"
+onclick="goToPage(7)">
+ONLINE REGISTRATION
+</button>
 
-    <!-- ACADEMY -->
-    <section class="page">
+</div>
 
-        <div class="container">
+</div>
 
-            <h2>Language Academy</h2>
 
-            <div class="info-box">
+<div class="cards">
 
-                <h3>MARVEL Language Academy</h3>
+<div class="card">
 
-                <p>
-                    MARVEL Language Academy is focused on helping students
-                    develop English communication, speaking, grammar,
-                    vocabulary and confidence.
-                </p>
+<h3>
+Language
+</h3>
 
-                <p>
-                    Our goal is to make learning useful, enjoyable and
-                    accessible to everyone.
-                </p>
+<p>
+Improve your English language, speaking and communication skills.
+</p>
 
-            </div>
+</div>
 
-            <div class="cards">
 
-                <div class="card">
-                    <div class="icon">📚</div>
-                    <h3>English</h3>
-                    <p>Grammar, vocabulary and communication.</p>
-                </div>
+<div class="card">
 
-                <div class="card">
-                    <div class="icon">🗣️</div>
-                    <h3>Speaking</h3>
-                    <p>Build confidence through speaking practice.</p>
-                </div>
+<h3>
+Community
+</h3>
 
-            </div>
+<p>
+Build confidence and connect with people through education.
+</p>
 
-            <div class="controls">
-                <button class="back" onclick="goTo(0)">
-                    ← Back
-                </button>
+</div>
 
-                <button class="next" onclick="goTo(2)">
-                    Next →
-                </button>
-            </div>
 
-        </div>
+<div class="card">
 
-    </section>
+<h3>
+Charity
+</h3>
 
+<p>
+Supporting people and creating opportunities through community work.
+</p>
 
-    <!-- CHARITY -->
-    <section class="page">
+</div>
 
-        <div class="container">
+</div>
 
-            <h2>Marvel Charity</h2>
 
-            <div class="info-box">
+<footer>
+MARVEL Language Academy & Marvel Charity
+</footer>
 
-                <h3>Helping Others</h3>
+</div>
 
-                <p>
-                    Marvel Charity is dedicated to supporting people,
-                    encouraging education and creating positive change
-                    in the community.
-                </p>
+</section>
 
-                <p>
-                    Every contribution can make a difference.
-                </p>
 
-            </div>
+<!-- ================================================= -->
+<!-- ACADEMY -->
+<!-- ================================================= -->
 
-            <div class="cards">
+<section class="page">
 
-                <div class="card">
-                    <div class="icon">❤️</div>
-                    <h3>Support</h3>
-                    <p>Help people who need support.</p>
-                </div>
+<div class="page-inner">
 
-                <div class="card">
-                    <div class="icon">🌍</div>
-                    <h3>Community</h3>
-                    <p>Work together for a better future.</p>
-                </div>
+<h2 class="section-title">
+MARVEL LANGUAGE ACADEMY
+</h2>
 
-            </div>
+<p class="section-description">
+Our academy helps students develop strong language,
+speaking and communication skills for school, work and life.
+</p>
 
-            <div class="controls">
-                <button class="back" onclick="goTo(1)">
-                    ← Back
-                </button>
 
-                <button class="next" onclick="goTo(3)">
-                    Next →
-                </button>
-            </div>
+<div class="cards">
 
-        </div>
 
-    </section>
+<div class="card">
 
+<h3>
+English
+</h3>
 
-    <!-- LEADER -->
-    <section class="page">
+<p>
+Develop grammar, vocabulary, reading and writing skills.
+</p>
 
-        <div class="container">
+</div>
 
-            <h2>Teacher & Charity Leader</h2>
 
-            <div class="info-box">
+<div class="card">
 
-                <h3>Sewale Nigusie (ALVIN)</h3>
+<h3>
+Speaking
+</h3>
 
-                <p>
-                    <span class="gold">Teacher & Charity Leader</span>
-                </p>
+<p>
+Practice speaking naturally and become more confident
+when communicating with others.
+</p>
 
-                <p>
-                    Phone: +251 953 811 056
-                </p>
+</div>
 
-                <p>
-                    Address: Dessie, Tekuam, Ethiopia
-                </p>
 
-            </div>
+<div class="card">
 
-            <div class="controls">
-                <button class="back" onclick="goTo(2)">
-                    ← Back
-                </button>
+<h3>
+Communication
+</h3>
 
-                <button class="next" onclick="goTo(4)">
-                    Next →
-                </button>
-            </div>
+<p>
+Learn how to express your ideas clearly and communicate
+with confidence.
+</p>
 
-        </div>
+</div>
 
-    </section>
 
+<div class="card">
 
-    <!-- ABOUT -->
-    <section class="page">
+<h3>
+Confidence
+</h3>
 
-        <div class="container">
+<p>
+Build the confidence needed to speak in front of people.
+</p>
 
-            <h2>About MARVEL</h2>
+</div>
 
-            <div class="info-box">
 
-                <h3>Our Mission</h3>
+</div>
 
-                <p>
-                    MARVEL Language Academy & Marvel Charity combines
-                    education with community support.
-                </p>
 
-                <p>
-                    We believe that knowledge, kindness and teamwork
-                    can create a stronger future.
-                </p>
+<!-- NEXT -->
 
-                <p>
-                    <span class="gold">Website Creator:</span> Mahir
-                </p>
+<div class="home-buttons">
 
-            </div>
+<button class="main-btn"
+onclick="goToPage(7)">
+REGISTER ONLINE
+</button>
 
-            <div class="controls">
-                <button class="back" onclick="goTo(3)">
-                    ← Back
-                </button>
+<button class="outline-btn"
+onclick="goToPage(2)">
+NEXT → CHARITY
+</button>
 
-                <button class="next" onclick="goTo(5)">
-                    Next →
-                </button>
-            </div>
+</div>
 
-        </div>
+</div>
 
-    </section>
+</section>
 
 
-    <!-- DONATE -->
-    <section class="page">
+<!-- ================================================= -->
+<!-- CHARITY -->
+<!-- ================================================= -->
 
-        <div class="container">
+<section class="page">
 
-            <h2>Donate</h2>
+<div class="page-inner">
 
-            <div class="info-box">
+<h2 class="section-title">
+MARVEL CHARITY
+</h2>
 
-                <h3>Support Marvel Charity</h3>
+<p class="section-description">
+Education becomes more powerful when we use it to help
+other people and strengthen our community.
+</p>
 
-                <p>
-                    Your support can help us continue our mission
-                    and support people in our community.
-                </p>
 
-                <br>
+<div class="cards">
 
-                <p>
-                    <span class="gold">
-                        Commercial Bank of Ethiopia (CBE)
-                    </span>
-                </p>
 
-                <p>
-                    Account: 
+<div class="card">
+
+<h3>
+Support
+</h3>
+
+<p>
+Helping people who need support and opportunities.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Education
+</h3>
+
+<p>
+Promoting learning and knowledge in our community.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Community
+</h3>
+
+<p>
+Working together to create positive change.
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="home-buttons">
+
+<button class="outline-btn"
+onclick="goToPage(3)">
+NEXT → LEADER
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- LEADER -->
+<!-- ================================================= -->
+
+<section class="page">
+
+<div class="page-inner">
+
+<h2 class="section-title">
+OUR LEADER
+</h2>
+
+
+<div class="leader-box">
+
+<h2>
+Sewale Nigusie (ALVIN)
+</h2>
+
+<div class="leader-role">
+Teacher & Charity Leader
+</div>
+
+
+<div class="info">
+
+<strong>
+Phone
+</strong>
+
+<br>
+
++251 953 811 056
+
+</div>
+
+
+<div class="info">
+
+<strong>
+Address
+</strong>
+
+<br>
+
+Dessie, Tekuam, Ethiopia
+
+</div>
+
+</div>
+
+
+<div class="home-buttons">
+
+<button class="outline-btn"
+onclick="goToPage(4)">
+NEXT → ABOUT
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- ABOUT -->
+<!-- ================================================= -->
+
+<section class="page">
+
+<div class="page-inner">
+
+<h2 class="section-title">
+ABOUT MARVEL
+</h2>
+
+<p class="section-description">
+MARVEL Language Academy & Marvel Charity is built around
+learning, confidence, communication and helping others.
+</p>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<h3>
+Our Mission
+</h3>
+
+<p>
+To encourage students to learn languages, develop confidence
+and become positive members of their community.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Our Vision
+</h3>
+
+<p>
+A community where education creates opportunity and people
+support each other.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+Website Creator
+</h3>
+
+<p>
+Created by Mahir.
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="home-buttons">
+
+<button class="outline-btn"
+onclick="goToPage(5)">
+NEXT → DONATE
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- DONATE -->
+<!-- ================================================= -->
+
+<section class="page">
+
+<div class="page-inner">
+
+<h2 class="section-title">
+DONATE
+</h2>
+
+<p class="section-description">
+Your support can help MARVEL continue its educational
+and community activities.
+</p>
+
+
+<div class="donate-box">
+
+
+<div class="donate-item">
+
+<strong>
+Bank
+</strong>
+
+<br>
+
+Commercial Bank of Ethiopia (CBE)
+
+</div>
+
+
+<div class="donate-item">
+
+<strong>
+Account Number
+</strong>
+
+<br>
+
 1000448298217
-        Sewale ngussie asfaw
-                </p>
-
-            </div>
-
-            <div class="controls">
-                <button class="back" onclick="goTo(4)">
-                    ← Back
-                </button>
-
-                <button class="next" onclick="goTo(6)">
-                    Next →
-                </button>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-    <section class="page">
-
-        <div class="container">
-
-            <h2>Contact Us</h2>
-
-            <div class="info-box">
-
-                <h3>Get In Touch</h3>
-
-                <p>
-                    Phone: +251 953 811 056
-                </p>
-
-                <p>
-                    Address: Dessie, Tekuam, Ethiopia
-                </p>
-
-                <div class="socials">
-
-                    <a href="https://t.me/Alven91" target="_blank">
-                        Telegram
-                    </a>
-
-                    <a href="https://www.tiktok.com/@sewalih" target="_blank">
-                        TikTok
-                    </a>
-
-                    <a href="https://x.com/NgussieSew78022" target="_blank">
-                        X
-                    </a>
-
-                    <a href="https://www.instagram.com/horse.64937709" target="_blank">
-                        Instagram
-                    </a>
-
-                </div>
-
-            </div>
-
-            <!-- LAST PAGE -->
-            <div class="controls">
-
-                <button class="back" onclick="goTo(5)">
-                    ← Back
-                </button>
-
-                <!-- THANKS GOES DIRECTLY HOME -->
-                <button class="next" onclick="goTo(0)">
-                    Thanks 💛
-                </button>
-
-            </div>
-
-            <footer>
-                © 2026 MARVEL Language Academy & Marvel Charity.
-                All rights reserved.
-            </footer>
-
-        </div>
-
-    </section>
 
 </div>
 
 
-<!-- ACADEMY MODAL -->
-<div class="modal" id="academyModal">
+<div class="donate-item">
 
-    <div class="modal-box">
+<strong>
+Account Name
+</strong>
 
-        <h2>Language Academy</h2>
+<br>
 
-        <p>
-            MARVEL Language Academy provides learning opportunities
-            focused on English language skills, communication,
-            grammar, vocabulary and confidence.
-        </p>
-
-        <button class="close" onclick="closeModal('academyModal')">
-            Close
-        </button>
-
-    </div>
+Sewale ngussie asfaw
 
 </div>
 
 
-<!-- CHARITY MODAL -->
-<div class="modal" id="charityModal">
+</div>
 
-    <div class="modal-box">
 
-        <h2>Marvel Charity</h2>
+<div class="home-buttons">
 
-        <p>
-            Marvel Charity works to support people, encourage education
-            and create positive change in the community.
-        </p>
-
-        <button class="close" onclick="closeModal('charityModal')">
-            Close
-        </button>
-
-    </div>
+<button class="outline-btn"
+onclick="goToPage(6)">
+NEXT → CONTACT
+</button>
 
 </div>
 
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- CONTACT -->
+<!-- ================================================= -->
+
+<section class="page">
+
+<div class="page-inner">
+
+<h2 class="section-title">
+CONTACT US
+</h2>
+
+
+<div class="contact-list">
+
+
+<div class="contact-item">
+
+<strong>
+Phone
+</strong>
+
+<br>
+
++251 953 811 056
+
+</div>
+
+
+<div class="contact-item">
+
+<strong>
+Address
+</strong>
+
+<br>
+
+Dessie, Tekuam, Ethiopia
+
+</div>
+
+
+<div class="contact-item">
+
+<strong>
+Telegram
+</strong>
+
+<br>
+
+<a href="https://t.me/Alven91"
+target="_blank">
+
+@Alven91
+
+</a>
+
+</div>
+
+
+<div class="contact-item">
+
+<strong>
+TikTok
+</strong>
+
+<br>
+
+<a href="https://www.tiktok.com/@sewalih"
+target="_blank">
+
+@sewalih
+
+</a>
+
+</div>
+
+
+<div class="contact-item">
+
+<strong>
+X
+</strong>
+
+<br>
+
+<a href="https://x.com/NgussieSew78022"
+target="_blank">
+
+@NgussieSew78022
+
+</a>
+
+</div>
+
+
+<div class="contact-item">
+
+<strong>
+Instagram
+</strong>
+
+<br>
+
+<a href="https://www.instagram.com/horse.64937709"
+target="_blank">
+
+@horse.64937709
+
+</a>
+
+</div>
+
+
+</div>
+
+
+<div class="home-buttons">
+
+<button class="main-btn"
+onclick="goToPage(7)">
+ONLINE REGISTRATION
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- REGISTRATION -->
+<!-- ================================================= -->
+
+<section class="page">
+
+<div class="page-inner">
+
+<h2 class="section-title">
+ONLINE REGISTRATION
+</h2>
+
+<p class="section-description">
+Register online for MARVEL Language Academy.
+Fill in your information carefully.
+</p>
+
+
+<div class="registration-box">
+
+
+<form id="registrationForm">
+
+
+<!-- PERSONAL -->
+
+<div class="form-section">
+
+<div class="form-section-title">
+1. Personal Information
+</div>
+
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label>
+Full Name <span>*</span>
+</label>
+
+<input
+type="text"
+id="fullName"
+placeholder="Enter your full name"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Phone Number <span>*</span>
+</label>
+
+<input
+type="tel"
+id="phone"
+placeholder="+251..."
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Email
+</label>
+
+<input
+type="email"
+id="email"
+placeholder="example@email.com"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Date of Birth
+</label>
+
+<input
+type="date"
+id="dob"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Gender
+</label>
+
+<select id="gender">
+
+<option value="">
+Select Gender
+</option>
+
+<option>
+Male
+</option>
+
+<option>
+Female
+</option>
+
+<option>
+Other
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Address
+</label>
+
+<input
+type="text"
+id="address"
+placeholder="City / Area"
+>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- PHOTO -->
+
+<div class="form-section">
+
+<div class="form-section-title">
+📷 2. Student Photo
+</div>
+
+
+<div class="photo-upload">
+
+
+<div class="photo-preview"
+id="photoPreview">
+
+<span>
+📷
+</span>
+
+<small>
+Photo Preview
+</small>
+
+</div>
+
+
+<label
+for="studentPhoto"
+class="upload-btn">
+
+CHOOSE PHOTO
+
+</label>
+
+
+<input
+type="file"
+id="studentPhoto"
+accept="image/*"
+hidden
+>
+
+
+<p class="registration-note">
+Upload a clear passport-style photo.
+</p>
+
+
+</div>
+
+</div>
+
+
+<!-- COURSE -->
+
+<div class="form-section">
+
+<div class="form-section-title">
+3. Course Information
+</div>
+
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label>
+Course <span>*</span>
+</label>
+
+<select
+id="course"
+required>
+
+<option value="">
+Select Course
+</option>
+
+<option>
+English Language
+</option>
+
+<option>
+Speaking
+</option>
+
+<option>
+Communication
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Level
+</label>
+
+<select id="level">
+
+<option>
+Beginner
+</option>
+
+<option>
+Elementary
+</option>
+
+<option>
+Intermediate
+</option>
+
+<option>
+Advanced
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Preferred Schedule
+</label>
+
+<select id="schedule">
+
+<option>
+Morning
+</option>
+
+<option>
+Afternoon
+</option>
+
+<option>
+Evening
+</option>
+
+<option>
+Weekend
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+How did you hear about us?
+</label>
+
+<select id="source">
+
+<option>
+Friend
+</option>
+
+<option>
+Family
+</option>
+
+<option>
+Social Media
+</option>
+
+<option>
+School
+</option>
+
+<option>
+Other
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- EDUCATION -->
+
+<div class="form-section">
+
+<div class="form-section-title">
+4. Education
+</div>
+
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label>
+School / Institution
+</label>
+
+<input
+type="text"
+id="school"
+placeholder="School name"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Education Level
+</label>
+
+<select id="education">
+
+<option>
+Primary
+</option>
+
+<option>
+Secondary
+</option>
+
+<option>
+College
+</option>
+
+<option>
+University
+</option>
+
+<option>
+Other
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- EMERGENCY -->
+
+<div class="form-section">
+
+<div class="form-section-title">
+5. Emergency Contact
+</div>
+
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label>
+Contact Name
+</label>
+
+<input
+type="text"
+id="emergencyName"
+placeholder="Emergency contact name"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Contact Phone
+</label>
+
+<input
+type="tel"
+id="emergencyPhone"
+placeholder="+251..."
+>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- MESSAGE -->
+
+<div class="form-section">
+
+<div class="form-section-title">
+6. Additional Message
+</div>
+
+
+<div class="form-group">
+
+<label>
+Message
+</label>
+
+<textarea
+id="message"
+placeholder="Write any additional information..."
+></textarea>
+
+</div>
+
+</div>
+
+
+<!-- SUBMIT -->
+
+<button
+type="submit"
+class="register-submit">
+
+REGISTER & SEND TO TELEGRAM
+
+</button>
+
+
+<p class="registration-note"
+style="text-align:center;">
+
+Telegram will open with your registration
+information ready to send.
+
+</p>
+
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ================================================= -->
 
 <script>
 
+/* ================= PAGE ================= */
+
 let currentPage = 0;
 
-const slider = document.getElementById("slider");
+const slider =
+document.getElementById("slider");
 
-function goTo(page){
+const navButtons =
+document.querySelectorAll("nav button");
+
+
+function goToPage(page){
 
     currentPage = page;
 
     slider.style.transform =
-        "translateX(-" + (page * 100) + "%)";
-
-    updateNavigation();
-}
-
-function updateNavigation(){
-
-    for(let i = 0; i < 7; i++){
-
-        const button = document.getElementById("nav" + i);
-
-        if(button){
-            button.classList.remove("active");
-        }
-    }
-
-    const active = document.getElementById("nav" + currentPage);
-
-    if(active){
-        active.classList.add("active");
-    }
-}
+    "translate3d(-" +
+    (page * 100) +
+    "%,0,0)";
 
 
-/* MODALS */
+    navButtons.forEach(
+    function(button,index){
 
-function openModal(id){
-
-    document.getElementById(id).classList.add("show");
-
-}
-
-function closeModal(id){
-
-    document.getElementById(id).classList.remove("show");
-
-}
-
-
-/* CLOSE MODAL WHEN CLICKING OUTSIDE */
-
-document.querySelectorAll(".modal").forEach(function(modal){
-
-    modal.addEventListener("click", function(e){
-
-        if(e.target === modal){
-
-            modal.classList.remove("show");
-
-        }
+        button.classList.toggle(
+            "active",
+            index === page
+        );
 
     });
 
-});
 
+    /*
+      Scroll the new page
+      back to the top
+    */
 
-/* SWIPE SUPPORT */
+    const pages =
+    document.querySelectorAll(".page");
 
-let touchStartX = 0;
-let touchEndX = 0;
+    if(pages[page]){
 
-document.addEventListener("touchstart", function(e){
-
-    touchStartX = e.changedTouches[0].screenX;
-
-});
-
-
-document.addEventListener("touchend", function(e){
-
-    touchEndX = e.changedTouches[0].screenX;
-
-    handleSwipe();
-
-});
-
-
-function handleSwipe(){
-
-    const difference = touchStartX - touchEndX;
-
-    if(Math.abs(difference) < 70){
-        return;
-    }
-
-    if(difference > 0){
-
-        if(currentPage < 6){
-            goTo(currentPage + 1);
-        }
-
-    }else{
-
-        if(currentPage > 0){
-            goTo(currentPage - 1);
-        }
+        pages[page].scrollTop = 0;
 
     }
 
 }
 
 
-/* START AT HOME */
+/* ================= PHOTO ================= */
 
-goTo(0);
+const studentPhoto =
+document.getElementById("studentPhoto");
+
+studentPhoto.addEventListener(
+"change",
+function(){
+
+    const file =
+    this.files[0];
+
+    const preview =
+    document.getElementById("photoPreview");
+
+
+    if(!file){
+
+        return;
+
+    }
+
+
+    if(!file.type.startsWith("image/")){
+
+        alert(
+        "Please choose an image file."
+        );
+
+        this.value = "";
+
+        return;
+
+    }
+
+
+    const reader =
+    new FileReader();
+
+
+    reader.onload =
+    function(event){
+
+        preview.innerHTML =
+        '<img src="' +
+        event.target.result +
+        '" alt="Student Photo">';
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+});
+
+
+/* ================= REGISTRATION ================= */
+
+document
+.getElementById("registrationForm")
+.addEventListener(
+"submit",
+function(event){
+
+    event.preventDefault();
+
+
+    const fullName =
+    document.getElementById("fullName").value;
+
+    const phone =
+    document.getElementById("phone").value;
+
+    const email =
+    document.getElementById("email").value;
+
+    const dob =
+    document.getElementById("dob").value;
+
+    const gender =
+    document.getElementById("gender").value;
+
+    const address =
+    document.getElementById("address").value;
+
+    const course =
+    document.getElementById("course").value;
+
+    const level =
+    document.getElementById("level").value;
+
+    const schedule =
+    document.getElementById("schedule").value;
+
+    const source =
+    document.getElementById("source").value;
+
+    const school =
+    document.getElementById("school").value;
+
+    const education =
+    document.getElementById("education").value;
+
+    const emergencyName =
+    document.getElementById("emergencyName").value;
+
+    const emergencyPhone =
+    document.getElementById("emergencyPhone").value;
+
+    const message =
+    document.getElementById("message").value;
+
+
+    const photo =
+    document.getElementById("studentPhoto").files[0];
+
+
+    const photoStatus =
+    photo
+    ? "Selected - send separately in Telegram"
+    : "Not selected";
+
+
+    const telegramMessage =
+
+`MARVEL LANGUAGE ACADEMY
+ONLINE REGISTRATION
+
+PERSONAL INFORMATION
+--------------------
+Full Name: ${fullName}
+Phone: ${phone}
+Email: ${email}
+Date of Birth: ${dob}
+Gender: ${gender}
+Address: ${address}
+
+STUDENT PHOTO
+-------------
+${photoStatus}
+
+COURSE INFORMATION
+------------------
+Course: ${course}
+Level: ${level}
+Schedule: ${schedule}
+How they heard about us: ${source}
+
+EDUCATION
+---------
+School / Institution: ${school}
+Education Level: ${education}
+
+EMERGENCY CONTACT
+-----------------
+Name: ${emergencyName}
+Phone: ${emergencyPhone}
+
+ADDITIONAL MESSAGE
+------------------
+${message}
+
+MARVEL Language Academy & Marvel Charity`;
+
+
+    const telegramURL =
+    "https://t.me/Alven91?text=" +
+    encodeURIComponent(
+        telegramMessage
+    );
+
+
+    window.open(
+        telegramURL,
+        "_blank"
+    );
+
+});
+
+
+/* ================= SWIPE ================= */
+
+let startX = 0;
+let startY = 0;
+
+
+document.addEventListener(
+"touchstart",
+function(event){
+
+    startX =
+    event.touches[0].clientX;
+
+    startY =
+    event.touches[0].clientY;
+
+},
+{
+    passive:true
+}
+);
+
+
+document.addEventListener(
+"touchend",
+function(event){
+
+    const endX =
+    event.changedTouches[0].clientX;
+
+    const endY =
+    event.changedTouches[0].clientY;
+
+
+    const differenceX =
+    startX - endX;
+
+    const differenceY =
+    startY - endY;
+
+
+    /*
+      Only horizontal swipe.
+      Vertical scrolling will continue
+      normally.
+    */
+
+    if(
+        Math.abs(differenceX) > 80 &&
+        Math.abs(differenceX) >
+        Math.abs(differenceY)
+    ){
+
+        if(differenceX > 0){
+
+            if(currentPage < 7){
+
+                goToPage(
+                    currentPage + 1
+                );
+
+            }
+
+        }else{
+
+            if(currentPage > 0){
+
+                goToPage(
+                    currentPage - 1
+                );
+
+            }
+
+        }
+
+    }
+
+},
+{
+    passive:true
+}
+);
 
 </script>
 
