@@ -6,586 +6,920 @@
 
 <title>MARVEL Language Academy & Charity</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
+}
+
+:root{
+    --gold:#d4af37;
+    --gold2:#f0cf62;
+    --black:#080808;
+    --dark:#111;
+    --card:#151515;
+    --text:#fff;
+    --muted:#aaa;
+    --danger:#ff4d4d;
+    --success:#38d97a;
 }
 
 html,body{
     width:100%;
     height:100%;
     overflow:hidden;
-    background:#080808;
-    color:#fff;
+    background:var(--black);
+    color:var(--text);
+    font-family:Inter,Arial,sans-serif;
+}
+
+button,input,select,textarea{
+    font-family:inherit;
 }
 
 button{
     cursor:pointer;
 }
 
-#navbar{
+.app{
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* NAVBAR */
+
+.navbar{
     position:fixed;
     top:0;
     left:0;
     width:100%;
-    height:65px;
+    height:70px;
     z-index:1000;
-    background:#050505;
-    border-bottom:1px solid #d4af37;
     display:flex;
     align-items:center;
-    justify-content:flex-start;
-    overflow-x:auto;
-    padding:0 8px;
+    justify-content:space-between;
+    padding:0 20px;
+    background:rgba(5,5,5,.97);
+    border-bottom:1px solid rgba(212,175,55,.3);
 }
 
-#navbar button{
-    flex-shrink:0;
-    background:none;
-    color:#aaa;
-    border:0;
-    padding:12px 14px;
-    font-size:13px;
-    font-weight:bold;
+.logo{
+    color:var(--gold);
+    font-family:Cinzel,serif;
+    font-weight:800;
+    font-size:22px;
+    white-space:nowrap;
 }
 
-#navbar button.active{
-    color:#d4af37;
-}
-
-.slider{
+.nav-links{
     display:flex;
-    width:900vw;
+    gap:7px;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.nav-links::-webkit-scrollbar{
+    display:none;
+}
+
+.nav-btn{
+    background:transparent;
+    border:1px solid transparent;
+    color:#bbb;
+    padding:9px 11px;
+    border-radius:9px;
+    font-size:11px;
+    font-weight:800;
+    white-space:nowrap;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+    color:var(--gold);
+    border-color:rgba(212,175,55,.45);
+    background:rgba(212,175,55,.08);
+}
+
+/* PAGES */
+
+.pages{
+    width:100%;
     height:100vh;
+    display:flex;
     transition:transform .45s ease;
 }
 
 .page{
-    flex:0 0 100vw;
-    width:100vw;
-    min-width:100vw;
+    min-width:100%;
+    width:100%;
     height:100vh;
+    padding:92px 22px 130px;
     overflow-y:auto;
-    padding:90px 18px 80px;
+    overflow-x:hidden;
+    scrollbar-width:none;
 }
 
-.container{
-    width:100%;
-    max-width:1050px;
+.page::-webkit-scrollbar{
+    display:none;
+}
+
+.page-inner{
+    width:min(1050px,100%);
     margin:auto;
 }
 
-.center{
+/* HERO */
+
+.hero{
+    min-height:calc(100vh - 190px);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     text-align:center;
 }
 
-h1,h2,h3{
-    color:#d4af37;
+.hero-badge{
+    color:var(--gold);
+    border:1px solid rgba(212,175,55,.4);
+    padding:8px 16px;
+    border-radius:50px;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:2px;
+    margin-bottom:20px;
 }
 
-h1{
-    font-size:42px;
+.hero h1{
+    font-family:Cinzel,serif;
+    font-size:clamp(42px,10vw,90px);
+    line-height:1;
+    color:var(--gold);
     margin-bottom:15px;
 }
 
-h2{
-    font-size:31px;
-    margin-bottom:15px;
+.hero h2{
+    font-family:Cinzel,serif;
+    font-size:clamp(18px,4vw,32px);
+    margin-bottom:18px;
 }
 
-h3{
-    margin-bottom:10px;
+.hero p{
+    max-width:700px;
+    color:#bbb;
+    line-height:1.8;
+    font-size:15px;
 }
 
-p{
-    line-height:1.6;
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+    margin-top:28px;
 }
 
-.gold{
-    color:#d4af37;
+.primary,
+.secondary{
+    border-radius:10px;
+    padding:13px 20px;
+    font-weight:800;
+    border:none;
 }
 
-.small{
+.primary{
+    background:var(--gold);
+    color:#050505;
+}
+
+.primary:hover{
+    background:var(--gold2);
+}
+
+.secondary{
+    background:#171717;
+    color:var(--gold);
+    border:1px solid rgba(212,175,55,.4);
+}
+
+.creator{
+    margin-top:30px;
+    color:#666;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+/* TITLES */
+
+.section-title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.section-title h2{
+    font-family:Cinzel,serif;
+    color:var(--gold);
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.section-title p{
     color:#999;
     font-size:13px;
 }
 
-/* HOME */
-
-.hero{
-    min-height:75vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-}
-
-.hero-content{
-    max-width:850px;
-}
-
-.hero p{
-    color:#ccc;
-    font-size:18px;
-    margin:12px 0;
-}
-
 /* CARDS */
 
-.cards{
+.grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
 }
 
 .card{
+    background:linear-gradient(145deg,#171717,#0d0d0d);
+    border:1px solid rgba(212,175,55,.2);
+    border-radius:16px;
+    padding:22px;
+    min-height:170px;
+}
+
+.card-icon{
+    font-size:30px;
+    margin-bottom:14px;
+}
+
+.card h3{
+    color:var(--gold);
+    font-family:Cinzel,serif;
+    font-size:17px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#aaa;
+    line-height:1.6;
+    font-size:13px;
+}
+
+/* INFO */
+
+.info-box{
     background:#111;
-    border:1px solid #333;
-    border-radius:15px;
-    padding:24px;
+    border:1px solid rgba(212,175,55,.2);
+    border-radius:16px;
+    padding:25px;
+    margin-bottom:18px;
 }
 
-.card:hover{
-    border-color:#d4af37;
+.info-box h3{
+    color:var(--gold);
+    margin-bottom:10px;
 }
 
-/* BUTTONS */
-
-.gold-btn{
-    background:#d4af37;
-    color:#000;
-    border:2px solid #d4af37;
-    border-radius:9px;
-    padding:13px 23px;
-    font-weight:bold;
-    margin:5px;
+.info-box p{
+    color:#aaa;
+    line-height:1.8;
 }
 
-.dark-btn{
-    background:#111;
-    color:#d4af37;
-    border:2px solid #d4af37;
-    border-radius:9px;
-    padding:13px 23px;
-    font-weight:bold;
-    margin:5px;
+/* LEADER */
+
+.leader-card{
+    max-width:650px;
+    margin:auto;
+    text-align:center;
+    background:linear-gradient(145deg,#181818,#0b0b0b);
+    border:1px solid rgba(212,175,55,.35);
+    border-radius:22px;
+    padding:35px 25px;
 }
 
-/* PAGE NAVIGATION */
-
-.page-nav{
+.leader-circle{
+    width:100px;
+    height:100px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    border:2px solid var(--gold);
     display:flex;
-    justify-content:center;
     align-items:center;
-    gap:12px;
-    margin:45px 0 10px;
-    padding:20px 0;
+    justify-content:center;
+    color:var(--gold);
+    font-size:38px;
+    font-weight:800;
 }
 
-.next-btn,
-.back-btn{
-    padding:13px 25px;
-    border-radius:9px;
-    font-size:15px;
-    font-weight:bold;
+.leader-card h2{
+    font-family:Cinzel,serif;
+    color:var(--gold);
+    margin-bottom:8px;
 }
 
-.next-btn{
-    background:#d4af37;
-    color:#000;
-    border:2px solid #d4af37;
+.leader-card .role{
+    color:#ddd;
+    margin-bottom:18px;
 }
 
-.back-btn{
+.leader-card p{
+    color:#999;
+    line-height:1.8;
+}
+
+/* CONTACT */
+
+.social-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+
+.social{
+    padding:20px;
+    border:1px solid rgba(212,175,55,.25);
+    border-radius:15px;
     background:#111;
-    color:#d4af37;
-    border:2px solid #d4af37;
+    text-align:center;
+    text-decoration:none;
+    color:white;
+}
+
+.social strong{
+    display:block;
+    color:var(--gold);
+    margin-bottom:7px;
+}
+
+.social span{
+    color:#aaa;
+    font-size:12px;
 }
 
 /* FORM */
 
-.form-box{
-    max-width:720px;
+.form-container{
+    max-width:850px;
     margin:auto;
-    background:#111;
-    border:1px solid #333;
-    border-radius:16px;
+}
+
+.form-card{
+    background:linear-gradient(145deg,#151515,#0c0c0c);
+    border:1px solid rgba(212,175,55,.25);
+    border-radius:20px;
     padding:25px;
+    margin-bottom:18px;
 }
 
-.form-group{
-    margin-bottom:17px;
+.form-card h3{
+    color:var(--gold);
+    font-family:Cinzel,serif;
+    margin-bottom:18px;
 }
 
-label{
-    display:block;
-    margin-bottom:7px;
-    color:#d4af37;
-    font-weight:bold;
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
 }
 
-input,
-select,
-textarea{
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.field.full{
+    grid-column:1/-1;
+}
+
+.field label{
+    color:#ddd;
+    font-size:12px;
+    font-weight:700;
+}
+
+.field input,
+.field select,
+.field textarea{
     width:100%;
-    background:#080808;
-    color:white;
-    border:1px solid #444;
-    border-radius:8px;
+    background:#090909;
+    color:#fff;
+    border:1px solid #333;
+    border-radius:10px;
     padding:13px;
     outline:none;
 }
 
-input:focus,
-select:focus,
-textarea:focus{
-    border-color:#d4af37;
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+    border-color:var(--gold);
 }
 
-textarea{
+.field textarea{
     min-height:100px;
     resize:vertical;
 }
 
-.required{
-    color:red;
-}
-
-.payment-info{
-    background:#171717;
-    border-left:4px solid #d4af37;
-    border-radius:8px;
-    padding:16px;
-    margin-bottom:22px;
+.rules{
+    background:rgba(212,175,55,.06);
+    border:1px solid rgba(212,175,55,.2);
+    border-radius:12px;
+    padding:15px;
+    color:#aaa;
+    line-height:1.7;
+    font-size:12px;
 }
 
 /* UPLOAD */
 
-.upload-box{
-    width:100%;
-    margin:22px auto 30px;
-    text-align:center;
+.upload-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-top:15px;
 }
 
-.photo-placeholder{
+.upload-card{
+    background:linear-gradient(145deg,#151515,#0c0c0c);
+    border:1px solid rgba(212,175,55,.3);
+    border-radius:18px;
+    padding:15px;
+}
+
+.upload-title{
+    display:block;
+    color:#fff;
+    font-size:14px;
+    font-weight:800;
+    margin-bottom:9px;
+}
+
+.upload-box{
     width:100%;
-    height:210px;
+    min-height:190px;
+    border:2px dashed rgba(212,175,55,.55);
+    border-radius:16px;
     background:#0b0b0b;
-    border:2px dashed #d4af37;
-    border-radius:14px;
     display:flex;
     align-items:center;
     justify-content:center;
-    color:#d4af37;
-    font-weight:bold;
-    font-size:19px;
-    overflow:hidden;
-}
-
-.photo-placeholder img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.upload-btn{
-    margin-top:12px;
-    background:#d4af37;
-    color:#000;
-    border:0;
-    border-radius:8px;
-    padding:12px 22px;
-    font-weight:bold;
-}
-
-/* ALVIN BUTTON */
-
-.alvin-end{
-    margin:45px auto 10px;
     text-align:center;
-    border-top:1px solid #333;
-    padding:30px 0;
+    cursor:pointer;
+    overflow:hidden;
+    transition:.25s;
+    position:relative;
 }
 
-.alvin-btn{
+.upload-box:hover{
+    border-color:var(--gold);
     background:#111;
-    color:#d4af37;
-    border:2px solid #d4af37;
-    border-radius:10px;
-    padding:15px 38px;
-    font-size:17px;
-    font-weight:bold;
-    margin-top:10px;
 }
 
-.alvin-btn:hover{
-    background:#d4af37;
-    color:#000;
+.upload-box:active{
+    transform:scale(.98);
+}
+
+.upload-icon{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+.upload-main{
+    color:var(--gold);
+    font-size:15px;
+    font-weight:800;
+}
+
+.upload-sub{
+    color:#888;
+    font-size:12px;
+    margin-top:7px;
+}
+
+.upload-preview{
+    display:none;
+    width:100%;
+    height:190px;
+    object-fit:contain;
+    border-radius:13px;
+    background:#050505;
+}
+
+.file-name{
+    color:#aaa;
+    font-size:12px;
+    margin-top:8px;
+    text-align:center;
+    word-break:break-word;
+}
+
+/* TELEGRAM SEND */
+
+.telegram-send{
+    display:none;
+    background:linear-gradient(145deg,#151515,#0b0b0b);
+    border:1px solid rgba(212,175,55,.4);
+    border-radius:18px;
+    padding:20px;
+    margin-top:20px;
+    text-align:center;
+}
+
+.telegram-send h3{
+    color:var(--gold);
+    margin-bottom:8px;
+}
+
+.telegram-send p{
+    color:#aaa;
+    font-size:12px;
+    line-height:1.6;
+    margin-bottom:15px;
+}
+
+.telegram-btn{
+    width:100%;
+    max-width:450px;
+    padding:15px 20px;
+    border:none;
+    border-radius:12px;
+    background:#229ED9;
+    color:white;
+    font-weight:800;
+    font-size:14px;
+}
+
+.telegram-btn:active{
+    transform:scale(.97);
+}
+
+.telegram-btn:disabled{
+    opacity:.5;
 }
 
 /* DASHBOARD */
 
-.dashboard-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
-    margin-bottom:25px;
-}
-
-.logout-btn{
+.login-box{
+    max-width:430px;
+    margin:60px auto;
     background:#111;
-    color:#d4af37;
-    border:1px solid #d4af37;
-    border-radius:8px;
-    padding:11px 18px;
-    font-weight:bold;
-}
-
-.dashboard-message{
-    background:#111;
-    border:1px solid #333;
-    border-radius:15px;
-    padding:30px;
-    text-align:center;
-    color:#aaa;
-}
-
-.registration-card{
-    background:#111;
-    border:1px solid #444;
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:25px;
-}
-
-.registration-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
-    flex-wrap:wrap;
-    padding-bottom:15px;
-    margin-bottom:20px;
-    border-bottom:1px solid #333;
-}
-
-.status{
-    display:inline-block;
-    padding:7px 13px;
+    border:1px solid rgba(212,175,55,.3);
     border-radius:20px;
-    font-weight:bold;
-    font-size:13px;
+    padding:30px;
 }
 
-.status-pending{
-    background:#5a4900;
-    color:#ffe27a;
+.login-box h2{
+    font-family:Cinzel,serif;
+    color:var(--gold);
+    text-align:center;
+    margin-bottom:25px;
 }
 
-.status-approved{
-    background:#174d27;
-    color:#8cffaa;
+.dashboard{
+    display:none;
 }
 
-.status-rejected{
-    background:#5a1717;
-    color:#ff9999;
-}
-
-/* TWO MAIN DASHBOARD AREAS */
-
-.dashboard-grid{
+.stats{
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-bottom:20px;
 }
 
-.dashboard-panel{
-    background:#090909;
-    border:1px solid #333;
-    border-radius:13px;
+.stat{
+    background:#111;
+    border:1px solid rgba(212,175,55,.2);
+    border-radius:15px;
+    padding:18px;
+    text-align:center;
+}
+
+.stat span{
+    display:block;
+    color:#888;
+    font-size:12px;
+    margin-bottom:8px;
+}
+
+.stat strong{
+    color:var(--gold);
+    font-size:28px;
+}
+
+.dashboard-actions{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+}
+
+.students{
+    display:grid;
+    gap:15px;
+}
+
+.student{
+    background:#111;
+    border:1px solid rgba(212,175,55,.2);
+    border-radius:18px;
     padding:18px;
 }
 
-.dashboard-panel h3{
-    border-bottom:1px solid #333;
-    padding-bottom:11px;
-    margin-bottom:13px;
+.student-top{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    align-items:center;
+    margin-bottom:15px;
 }
 
-.info-row{
-    border-bottom:1px solid #222;
-    padding:9px 0;
-    line-height:1.5;
+.student-name{
+    color:var(--gold);
+    font-size:18px;
+    font-weight:800;
 }
 
-.info-label{
-    color:#d4af37;
-    font-weight:bold;
+.status{
+    padding:7px 11px;
+    border-radius:30px;
+    font-size:11px;
+    font-weight:800;
 }
 
-.dashboard-photo{
+.status.Pending{
+    color:#ffd65a;
+    background:rgba(212,175,55,.1);
+}
+
+.status.Approved{
+    color:var(--success);
+    background:rgba(56,217,122,.1);
+}
+
+.status.Rejected{
+    color:var(--danger);
+    background:rgba(255,77,77,.1);
+}
+
+.student-content{
+    display:grid;
+    grid-template-columns:140px 1fr;
+    gap:18px;
+}
+
+.student-photo{
+    width:140px;
+    height:170px;
+    object-fit:cover;
+    border-radius:12px;
+    border:1px solid #333;
+    background:#080808;
+}
+
+.student-info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.detail{
+    background:#0a0a0a;
+    border-radius:8px;
+    padding:9px;
+}
+
+.detail small{
     display:block;
+    color:#666;
+    font-size:10px;
+    margin-bottom:4px;
+}
+
+.detail span{
+    color:#ddd;
+    font-size:12px;
+    word-break:break-word;
+}
+
+.receipt{
     width:100%;
-    max-height:330px;
+    max-width:350px;
+    max-height:400px;
     object-fit:contain;
-    background:#000;
-    border:1px solid #555;
+    background:#050505;
+    border:1px solid #333;
     border-radius:10px;
     margin-top:15px;
 }
 
-.dashboard-bottom{
-    margin-top:20px;
-}
-
-.admin-actions{
+.student-actions{
     display:flex;
     flex-wrap:wrap;
-    gap:10px;
-    margin-top:20px;
+    gap:8px;
+    margin-top:15px;
 }
 
-.approve-btn{
-    background:#176b2c;
-    color:white;
-    border:0;
+.small-btn{
+    border:none;
     border-radius:8px;
-    padding:12px 20px;
-    font-weight:bold;
+    padding:9px 12px;
+    font-size:11px;
+    font-weight:800;
 }
 
-.reject-btn{
-    background:#8b2020;
-    color:white;
-    border:0;
-    border-radius:8px;
-    padding:12px 20px;
-    font-weight:bold;
-}
-
-.delete-btn{
-    background:#151515;
-    color:#ff7777;
-    border:1px solid #ff5555;
-    border-radius:8px;
-    padding:12px 20px;
-    font-weight:bold;
-}
-
-/* NOTIFICATION */
-
-#notification{
-    position:fixed;
-    z-index:5000;
-    right:18px;
-    bottom:18px;
-    display:none;
-    max-width:330px;
-    background:#d4af37;
+.approve{
+    background:var(--success);
     color:#000;
-    padding:15px 19px;
-    border-radius:10px;
-    font-weight:bold;
 }
 
-/* ALVIN LOGIN POPUP */
+.reject{
+    background:var(--danger);
+    color:#fff;
+}
 
-#alvinLoginBox{
-    display:none;
+.pending-btn{
+    background:var(--gold);
+    color:#000;
+}
+
+.delete{
+    background:#333;
+    color:#fff;
+}
+
+/* BOTTOM */
+
+.bottom-bar{
     position:fixed;
-    inset:0;
-    z-index:99999;
-    background:rgba(0,0,0,0.85);
+    left:0;
+    bottom:0;
+    width:100%;
+    height:82px;
+    z-index:1100;
+    background:rgba(5,5,5,.98);
+    border-top:1px solid rgba(212,175,55,.3);
+    display:flex;
     align-items:center;
     justify-content:center;
+    gap:14px;
+    padding:10px 15px;
+    padding-bottom:max(10px,env(safe-area-inset-bottom));
 }
 
-.alvin-login-content{
-    width:90%;
-    max-width:400px;
-    background:#111;
-    border:2px solid #d4af37;
-    border-radius:15px;
-    padding:30px;
+.bottom-btn{
+    min-width:145px;
+    min-height:50px;
+    padding:13px 22px;
+    border-radius:12px;
+    border:1px solid rgba(212,175,55,.45);
+    background:#121212;
+    color:var(--gold);
+    font-weight:800;
+    font-size:15px;
+}
+
+.bottom-btn:active{
+    transform:scale(.96);
+}
+
+.bottom-btn.next{
+    background:var(--gold);
+    color:#000;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    left:50%;
+    top:82px;
+    transform:translateX(-50%) translateY(-20px);
+    background:#151515;
+    color:#fff;
+    border:1px solid rgba(212,175,55,.4);
+    border-radius:10px;
+    padding:12px 18px;
+    z-index:2000;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    font-size:12px;
+    max-width:90%;
     text-align:center;
 }
 
-.alvin-login-content h2{
-    color:#d4af37;
+.toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
 }
 
-.alvin-login-content input{
-    margin:15px 0;
-}
+/* RESPONSIVE */
 
-.login-btn{
-    background:#d4af37;
-    color:#000;
-    border:0;
-    border-radius:8px;
-    padding:13px 25px;
-    font-weight:bold;
-    margin:5px;
-}
+@media(max-width:800px){
 
-.cancel-btn{
-    background:#111;
-    color:#d4af37;
-    border:2px solid #d4af37;
-    border-radius:8px;
-    padding:11px 22px;
-    font-weight:bold;
-    margin:5px;
-}
-
-.login-error{
-    color:#ff5555;
-    margin-top:15px;
-    display:none;
-}
-
-/* MOBILE */
-
-@media(max-width:750px){
-
-    h1{
-        font-size:31px;
+    .navbar{
+        height:62px;
+        padding:0 10px;
     }
 
-    h2{
-        font-size:27px;
+    .logo{
+        font-size:17px;
     }
 
-    .cards{
-        grid-template-columns:1fr;
-    }
-
-    .dashboard-grid{
-        grid-template-columns:1fr;
-    }
-
-    .dashboard-top{
-        align-items:flex-start;
-        flex-direction:column;
+    .nav-btn{
+        padding:8px;
+        font-size:9px;
     }
 
     .page{
-        padding-left:14px;
-        padding-right:14px;
+        padding:80px 14px 135px;
     }
 
-    .page-nav{
-        margin-top:30px;
+    .grid{
+        grid-template-columns:1fr 1fr;
     }
 
-    .next-btn,
-    .back-btn{
-        padding:12px 19px;
+    .social-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .field.full{
+        grid-column:auto;
+    }
+
+    .student-content{
+        grid-template-columns:1fr;
+    }
+
+    .student-photo{
+        width:120px;
+        height:150px;
+    }
+
+    .student-info{
+        grid-template-columns:1fr;
+    }
+
+    .bottom-bar{
+        height:76px;
+    }
+
+    .bottom-btn{
+        min-width:120px;
+        min-height:48px;
+        padding:11px 14px;
+    }
+}
+
+@media(max-width:550px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .social-grid{
+        grid-template-columns:1fr;
+    }
+
+    .upload-grid{
+        grid-template-columns:1fr;
+    }
+
+    .upload-box{
+        min-height:175px;
+    }
+
+    .upload-preview{
+        height:175px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr 1fr;
+        gap:7px;
+    }
+
+    .stat{
+        padding:12px 5px;
+    }
+
+    .stat strong{
+        font-size:21px;
+    }
+
+    .stat span{
+        font-size:9px;
+    }
+
+    .bottom-btn{
+        min-width:115px;
+        font-size:14px;
     }
 }
 </style>
@@ -593,142 +927,147 @@ textarea{
 
 <body>
 
-<nav id="navbar">
+<div class="app">
 
-<button class="active" onclick="goToPage(0)">HOME</button>
-<button onclick="goToPage(1)">ACADEMY</button>
-<button onclick="goToPage(2)">CHARITY</button>
-<button onclick="goToPage(3)">LEADER</button>
-<button onclick="goToPage(4)">ABOUT</button>
-<button onclick="goToPage(5)">DONATE</button>
-<button onclick="goToPage(6)">CONTACT</button>
-<button onclick="goToPage(7)">REGISTER</button>
+<header class="navbar">
+
+<div class="logo">MARVEL</div>
+
+<nav class="nav-links">
+
+<button class="nav-btn active" onclick="goTo(0)">HOME</button>
+<button class="nav-btn" onclick="goTo(1)">ACADEMY</button>
+<button class="nav-btn" onclick="goTo(2)">CHARITY</button>
+<button class="nav-btn" onclick="goTo(3)">LEADER</button>
+<button class="nav-btn" onclick="goTo(4)">ABOUT</button>
+<button class="nav-btn" onclick="goTo(5)">DONATE</button>
+<button class="nav-btn" onclick="goTo(6)">CONTACT</button>
+<button class="nav-btn" onclick="goTo(7)">REGISTER</button>
 
 </nav>
 
-<div class="slider" id="slider">
+</header>
 
-<!-- PAGE 0 -->
+<div class="pages" id="pages">
+
+<!-- HOME -->
 
 <section class="page">
 
-<div class="container hero">
+<div class="page-inner hero">
 
-<div class="hero-content">
+<div class="hero-badge">
+LANGUAGE • EDUCATION • CHARITY
+</div>
 
-<h1>MARVEL LANGUAGE ACADEMY</h1>
+<h1>MARVEL</h1>
 
-<p class="gold">
-Learn. Speak. Lead. Succeed.
-</p>
+<h2>Language Academy & Charity</h2>
 
 <p>
-A place where language learning meets confidence,
-communication and leadership.
+Learn English. Build confidence. Improve communication.
+Support education and help the community.
 </p>
 
-<br>
+<div class="hero-buttons">
 
-<button class="gold-btn"
-onclick="goToPage(1)">
-EXPLORE ACADEMY
+<button class="primary" onclick="goTo(1)">
+Explore Academy
 </button>
 
-<button class="dark-btn"
-onclick="goToPage(7)">
-REGISTER NOW
+<button class="secondary" onclick="goTo(7)">
+Register Now
 </button>
 
 </div>
 
+<div class="creator">
+Created by Mahir
 </div>
 
-<div class="page-nav">
+<button class="secondary"
+style="margin-top:25px"
+onclick="openDashboard()">
 
-<button class="next-btn"
-onclick="goToPage(1)">
-NEXT ➡️
+🔐 ALVIN DASHBOARD
+
 </button>
 
 </div>
 
 </section>
 
-<!-- PAGE 1 -->
+
+<!-- ACADEMY -->
 
 <section class="page">
 
-<div class="container">
+<div class="page-inner">
 
-<div class="center">
+<div class="section-title">
 
-<h2>MARVEL LANGUAGE ACADEMY</h2>
+<h2>ACADEMY</h2>
 
-<p>
-Develop your English skills and become a confident communicator.
-</p>
+<p>Build useful skills for life and communication.</p>
 
 </div>
 
-<br>
-
-<div class="cards">
+<div class="grid">
 
 <div class="card">
+
+<div class="card-icon">🗣️</div>
+
 <h3>Speaking</h3>
+
 <p>
-Improve your speaking skills and speak English with confidence.
+Practice speaking clearly and confidently
+in everyday situations.
 </p>
+
 </div>
 
+
 <div class="card">
+
+<div class="card-icon">💬</div>
+
 <h3>Communication</h3>
+
 <p>
-Learn how to communicate clearly and effectively.
+Learn how to express ideas, listen actively
+and communicate effectively.
 </p>
+
 </div>
 
-<div class="card">
-<h3>Grammar</h3>
-<p>
-Build a strong foundation in English grammar.
-</p>
-</div>
 
 <div class="card">
-<h3>Vocabulary</h3>
+
+<div class="card-icon">📚</div>
+
+<h3>Grammar & Vocabulary</h3>
+
 <p>
-Learn useful words and expressions.
+Improve grammar, vocabulary, sentence structure
+and practical English.
 </p>
+
 </div>
 
+
 <div class="card">
+
+<div class="card-icon">👑</div>
+
 <h3>Leadership</h3>
+
 <p>
-Develop confidence, responsibility and leadership skills.
+Develop presentation, leadership and
+confidence skills.
 </p>
-</div>
-
-<div class="card">
-<h3>Presentation</h3>
-<p>
-Become better at speaking in front of groups.
-</p>
-</div>
 
 </div>
-
-<div class="page-nav">
-
-<button class="back-btn"
-onclick="goToPage(0)">
-⬅️ BACK
-</button>
-
-<button class="next-btn"
-onclick="goToPage(2)">
-NEXT ➡️
-</button>
 
 </div>
 
@@ -736,71 +1075,77 @@ NEXT ➡️
 
 </section>
 
-<!-- PAGE 2 -->
+
+<!-- CHARITY -->
 
 <section class="page">
 
-<div class="container">
+<div class="page-inner">
 
-<div class="center">
+<div class="section-title">
 
-<h2>MARVEL CHARITY</h2>
+<h2>CHARITY</h2>
 
-<p>
-Helping people, supporting education and creating opportunities.
-</p>
+<p>Education and community support.</p>
 
 </div>
 
-<br>
-
-<div class="cards">
+<div class="grid">
 
 <div class="card">
+
+<div class="card-icon">🎓</div>
+
 <h3>Education</h3>
+
 <p>
-Supporting learners and helping young people develop useful skills.
+Supporting learning opportunities and
+educational development.
 </p>
+
 </div>
 
+
 <div class="card">
+
+<div class="card-icon">🤝</div>
+
 <h3>Community</h3>
+
 <p>
-Working together to create positive change.
+Encouraging cooperation and positive
+community activities.
 </p>
+
 </div>
 
+
 <div class="card">
+
+<div class="card-icon">❤️</div>
+
 <h3>Support</h3>
+
 <p>
-Helping people who need support and opportunities.
+Helping people through education, skills
+and community initiatives.
 </p>
-</div>
 
 </div>
 
-<div class="center">
 
-<br>
+<div class="card">
 
-<button class="gold-btn"
-onclick="goToPage(5)">
-SUPPORT CHARITY
-</button>
+<div class="card-icon">🌍</div>
+
+<h3>Impact</h3>
+
+<p>
+Creating opportunities through knowledge,
+confidence and service.
+</p>
 
 </div>
-
-<div class="page-nav">
-
-<button class="back-btn"
-onclick="goToPage(1)">
-⬅️ BACK
-</button>
-
-<button class="next-btn"
-onclick="goToPage(3)">
-NEXT ➡️
-</button>
 
 </div>
 
@@ -808,62 +1153,45 @@ NEXT ➡️
 
 </section>
 
-<!-- PAGE 3 -->
+
+<!-- LEADER -->
 
 <section class="page">
 
-<div class="container">
+<div class="page-inner">
 
-<div class="center">
+<div class="section-title">
 
-<h2>OUR LEADER</h2>
+<h2>LEADER</h2>
 
-<h1>SEWALE NIGUSIE</h1>
-
-<p class="gold">
-ALVIN — Teacher & Charity Leader
-</p>
+<p>Meet the academy and charity leader.</p>
 
 </div>
 
-<br>
+<div class="leader-card">
 
-<div class="card">
-
-<h3>Leadership</h3>
-
-<p>
-Sewale Nigusie (ALVIN) is the Teacher and Charity Leader
-of MARVEL Language Academy & Charity.
-</p>
-
-<br>
-
-<p>
-<span class="gold">Location:</span>
-Dessie, Tekuam, Ethiopia
-</p>
-
-<br>
-
-<p>
-<span class="gold">Phone:</span>
-+251 953 811 056
-</p>
-
+<div class="leader-circle">
+A
 </div>
 
-<div class="page-nav">
+<h2>Sewale Nigusie</h2>
 
-<button class="back-btn"
-onclick="goToPage(2)">
-⬅️ BACK
-</button>
+<div class="role">
+ALVIN • Teacher & Charity Leader
+</div>
 
-<button class="next-btn"
-onclick="goToPage(4)">
-NEXT ➡️
-</button>
+<p>
+Dedicated to education, English learning,
+communication skills and community support.
+</p>
+
+<p style="margin-top:15px">
+📍 Dessie, Tekuam, Ethiopia
+</p>
+
+<p>
+📞 +251 953 811 056
+</p>
 
 </div>
 
@@ -871,62 +1199,56 @@ NEXT ➡️
 
 </section>
 
-<!-- PAGE 4 -->
+
+<!-- ABOUT -->
 
 <section class="page">
 
-<div class="container">
+<div class="page-inner">
 
-<div class="center">
+<div class="section-title">
 
-<h2>ABOUT MARVEL</h2>
+<h2>ABOUT</h2>
 
-<p>
-MARVEL Language Academy & Charity combines education,
-communication and community support.
-</p>
+<p>What MARVEL stands for.</p>
 
 </div>
 
-<br>
+<div class="info-box">
 
-<div class="cards">
-
-<div class="card">
 <h3>Our Mission</h3>
+
 <p>
-To help learners become confident English speakers
-and responsible leaders.
+MARVEL Language Academy & Charity aims to
+provide useful language and communication
+education while supporting positive community
+development.
 </p>
+
 </div>
 
-<div class="card">
+
+<div class="info-box">
+
 <h3>Our Vision</h3>
+
 <p>
-To create a community where education creates opportunities.
+To encourage confident learners who can
+communicate, lead and contribute positively
+to their communities.
 </p>
+
 </div>
 
-<div class="card">
+
+<div class="info-box">
+
 <h3>Our Values</h3>
+
 <p>
-Respect, discipline, confidence, learning and helping others.
+Education • Confidence • Communication •
+Leadership • Service • Community
 </p>
-</div>
-
-</div>
-
-<div class="page-nav">
-
-<button class="back-btn"
-onclick="goToPage(3)">
-⬅️ BACK
-</button>
-
-<button class="next-btn"
-onclick="goToPage(5)">
-NEXT ➡️
-</button>
 
 </div>
 
@@ -934,59 +1256,49 @@ NEXT ➡️
 
 </section>
 
-<!-- PAGE 5 -->
+
+<!-- DONATE -->
 
 <section class="page">
 
-<div class="container">
+<div class="page-inner">
 
-<div class="center">
+<div class="section-title">
 
 <h2>DONATE</h2>
 
+<p>Support education and community activities.</p>
+
+</div>
+
+<div class="info-box">
+
+<h3>Donation Information</h3>
+
 <p>
-Support MARVEL Charity and help create more opportunities.
+Donations can support educational and community
+activities of MARVEL Language Academy & Charity.
 </p>
 
 </div>
 
-<br>
 
-<div class="form-box">
+<div class="info-box">
 
-<div class="payment-info">
-
-<h3>MARVEL CHARITY</h3>
+<h3>Bank Donation</h3>
 
 <p>
-<span class="gold">Bank:</span>
-CBE
-</p>
-
-<p>
-<span class="gold">Account Name:</span>
-Sewale ngussie asfaw
-</p>
-
-<p>
-<span class="gold">Account Number:</span>
-1000448298217
+Please contact ALVIN directly for current
+donation/payment instructions and confirmation.
 </p>
 
 </div>
 
-</div>
 
-<div class="page-nav">
+<div style="text-align:center;margin-top:25px">
 
-<button class="back-btn"
-onclick="goToPage(4)">
-⬅️ BACK
-</button>
-
-<button class="next-btn"
-onclick="goToPage(6)">
-NEXT ➡️
+<button class="primary" onclick="goTo(6)">
+Contact ALVIN
 </button>
 
 </div>
@@ -995,59 +1307,65 @@ NEXT ➡️
 
 </section>
 
-<!-- PAGE 6 -->
+
+<!-- CONTACT -->
 
 <section class="page">
 
-<div class="container">
+<div class="page-inner">
 
-<div class="center">
+<div class="section-title">
 
-<h2>CONTACT US</h2>
+<h2>CONTACT</h2>
 
-<p>
-Connect with MARVEL Language Academy & Charity.
-</p>
+<p>Connect with MARVEL.</p>
 
 </div>
 
-<br>
+<div class="social-grid">
 
-<div class="cards">
+<a class="social"
+href="https://t.me/Alven91"
+target="_blank">
 
-<div class="card">
-<h3>Telegram</h3>
-<p>@Alven91</p>
-</div>
+<strong>Telegram</strong>
 
-<div class="card">
-<h3>TikTok</h3>
-<p>@sewalih</p>
-</div>
+<span>@Alven91</span>
 
-<div class="card">
-<h3>X</h3>
-<p>@NgussieSew78022</p>
-</div>
+</a>
 
-<div class="card">
-<h3>Instagram</h3>
-<p>@horse.64937709</p>
-</div>
 
-</div>
+<a class="social"
+href="https://www.tiktok.com/@sewalih"
+target="_blank">
 
-<div class="page-nav">
+<strong>TikTok</strong>
 
-<button class="back-btn"
-onclick="goToPage(5)">
-⬅️ BACK
-</button>
+<span>@sewalih</span>
 
-<button class="next-btn"
-onclick="goToPage(7)">
-NEXT ➡️
-</button>
+</a>
+
+
+<a class="social"
+href="https://www.instagram.com/horse.64937709"
+target="_blank">
+
+<strong>Instagram</strong>
+
+<span>@horse.64937709</span>
+
+</a>
+
+
+<a class="social"
+href="https://x.com/NgussieSew78022"
+target="_blank">
+
+<strong>X</strong>
+
+<span>@NgussieSew78022</span>
+
+</a>
 
 </div>
 
@@ -1055,101 +1373,78 @@ NEXT ➡️
 
 </section>
 
-<!-- PAGE 7 REGISTER -->
+
+<!-- REGISTER -->
 
 <section class="page">
 
-<div class="container">
+<div class="page-inner form-container">
 
-<div class="center">
+<div class="section-title">
 
 <h2>ONLINE REGISTRATION</h2>
 
 <p>
-Complete all required information before submitting.
+Complete the form and submit your registration.
 </p>
 
 </div>
 
-<br>
 
-<div class="form-box">
+<form id="registrationForm" novalidate>
 
-<div class="payment-info">
 
-<h3>ACADEMY PAYMENT</h3>
+<div class="form-card">
 
-<p>
-First month:
-<strong>900 Birr</strong>
-</p>
+<h3>Personal Information</h3>
 
-<p>
-100 Birr registration + 800 Birr course
-</p>
+<div class="form-grid">
 
-<br>
 
-<p>
-Every next month:
-<strong>800 Birr</strong>
-</p>
+<div class="field">
 
-</div>
-
-<form id="registrationForm">
-
-<div class="form-group">
-
-<label>
-Student Full Name <span class="required">*</span>
-</label>
+<label>Student Name *</label>
 
 <input
-id="studentName"
 type="text"
+id="studentName"
 required
-placeholder="Enter full name"
->
+placeholder="Full name">
 
 </div>
 
-<div class="form-group">
 
-<label>
-Age <span class="required">*</span>
-</label>
+<div class="field">
+
+<label>Age *</label>
 
 <input
-id="age"
 type="number"
+id="age"
 min="1"
+max="100"
 required
-placeholder="Enter age"
->
+placeholder="Age">
 
 </div>
 
-<div class="form-group">
 
-<label>
-Phone Number <span class="required">*</span>
-</label>
+<div class="field">
+
+<label>Phone Number *</label>
 
 <input
-id="phone"
 type="tel"
+id="phone"
 required
-placeholder="Enter phone number"
->
+placeholder="Phone number">
 
 </div>
 
-<div class="form-group">
 
-<label>
-Course <span class="required">*</span>
-</label>
+<div class="field">
+
+<label>Course *</label>
 
 <select id="course" required>
 
@@ -1157,22 +1452,46 @@ Course <span class="required">*</span>
 Select course
 </option>
 
-<option>English Language</option>
-<option>Speaking & Communication</option>
-<option>Grammar & Vocabulary</option>
-<option>Leadership & Presentation</option>
+<option>
+English Language
+</option>
+
+<option>
+Speaking & Communication
+</option>
+
+<option>
+Grammar & Vocabulary
+</option>
+
+<option>
+Leadership & Presentation
+</option>
 
 </select>
 
 </div>
 
-<div class="form-group">
+</div>
 
-<label>
-Payment Type <span class="required">*</span>
-</label>
+</div>
 
-<select id="paymentType" required>
+
+<div class="form-card">
+
+<h3>Payment Information</h3>
+
+<div class="form-grid">
+
+
+<div class="field">
+
+<label>Payment Type *</label>
+
+<select
+id="paymentType"
+required
+onchange="setAmount()">
 
 <option value="">
 Select payment
@@ -1190,197 +1509,293 @@ Monthly — 800 Birr
 
 </div>
 
-<div class="form-group">
 
-<label>
-Amount Paid <span class="required">*</span>
-</label>
+<div class="field">
+
+<label>Amount *</label>
 
 <input
-id="amount"
 type="number"
+id="amount"
 min="800"
 required
-placeholder="900 or 800"
->
+placeholder="Amount">
 
 </div>
 
-<div class="form-group">
 
-<label>
-Payment Sender Account Name
-<span class="required">*</span>
-</label>
+<div class="field">
+
+<label>Sender Account Name *</label>
 
 <input
+type="text"
 id="senderName"
-type="text"
 required
-placeholder="Account name that sent payment"
->
+placeholder="Account holder name">
 
 </div>
 
-<div class="form-group">
 
-<label>
-Transaction / Reference Number
-<span class="required">*</span>
-</label>
+<div class="field">
+
+<label>Transaction Number *</label>
 
 <input
+type="text"
 id="transaction"
-type="text"
 required
-placeholder="Transaction/reference number"
->
+placeholder="Transaction number">
 
 </div>
 
-<div class="form-group">
+</div>
 
-<label>
-Emergency Contact
-<span class="required">*</span>
-</label>
+
+<div class="rules" style="margin-top:15px">
+
+<strong style="color:#d4af37">
+Payment Rules
+</strong>
+
+<br>
+
+First Month:
+<strong>900 Birr</strong>
+(100 Birr registration + 800 Birr course)
+
+<br>
+
+Following months:
+<strong>800 Birr</strong>
+
+</div>
+
+</div>
+
+
+<div class="form-card">
+
+<h3>Emergency Contact</h3>
+
+<div class="field">
+
+<label>Emergency Contact *</label>
 
 <input
-id="emergency"
 type="text"
+id="emergency"
 required
-placeholder="Parent/guardian contact"
->
+placeholder="Name and phone">
 
 </div>
 
-<div class="form-group">
+</div>
 
-<label>
-Additional Message
-</label>
+
+<div class="form-card">
+
+<h3>Additional Message</h3>
+
+<div class="field">
+
+<label>Message</label>
 
 <textarea
 id="message"
-placeholder="Optional message"
-></textarea>
+placeholder="Optional message">
+</textarea>
 
 </div>
 
-<div class="upload-box">
+</div>
 
-<label>
-Student Photo
-<span class="required">*</span>
+
+<div class="upload-grid">
+
+
+<div class="upload-card">
+
+<label class="upload-title">
+Student Photo *
 </label>
 
-<div
-id="studentPhotoBox"
-class="photo-placeholder"
->
-STUDENT PHOTO
+<label
+class="upload-box"
+for="studentPhoto">
+
+<div id="studentUploadContent">
+
+<div class="upload-icon">
+📷
 </div>
 
+<div class="upload-main">
+Upload Student Photo
+</div>
+
+<div class="upload-sub">
+Tap here to choose a photo
+</div>
+
+</div>
+
+<img
+id="studentPreview"
+class="upload-preview"
+alt="Student Photo Preview">
+
+</label>
+
+
+<!-- NO required HERE -->
 <input
 id="studentPhoto"
 type="file"
 accept="image/*"
-hidden
-required
->
+onchange="handleUpload(
+this,
+'studentPreview',
+'studentUploadContent',
+'studentFileName'
+)"
+hidden>
 
-<button
-type="button"
-class="upload-btn"
-onclick="document.getElementById('studentPhoto').click()"
->
-UPLOAD STUDENT PHOTO
-</button>
-
-</div>
-
-<div class="upload-box">
-
-<label>
-Payment Receipt
-<span class="required">*</span>
-</label>
 
 <div
-id="receiptPhotoBox"
-class="photo-placeholder"
->
-RECEIPT PHOTO
+id="studentFileName"
+class="file-name">
 </div>
 
+</div>
+
+
+<div class="upload-card">
+
+<label class="upload-title">
+Payment Receipt *
+</label>
+
+<label
+class="upload-box"
+for="receipt">
+
+<div id="receiptUploadContent">
+
+<div class="upload-icon">
+🧾
+</div>
+
+<div class="upload-main">
+Upload Payment Receipt
+</div>
+
+<div class="upload-sub">
+Tap here to choose receipt
+</div>
+
+</div>
+
+<img
+id="receiptPreview"
+class="upload-preview"
+alt="Receipt Preview">
+
+</label>
+
+
+<!-- NO required HERE -->
 <input
-id="paymentReceipt"
+id="receipt"
 type="file"
 accept="image/*"
-hidden
-required
->
+onchange="handleUpload(
+this,
+'receiptPreview',
+'receiptUploadContent',
+'receiptFileName'
+)"
+hidden>
 
-<button
-type="button"
-class="upload-btn"
-onclick="document.getElementById('paymentReceipt').click()"
->
-UPLOAD RECEIPT
-</button>
+
+<div
+id="receiptFileName"
+class="file-name">
+</div>
 
 </div>
 
-<div class="center">
+</div>
+
+
+<div class="form-card" style="margin-top:18px">
+
+<div class="rules">
+
+Your registration will be saved on this device.
+
+The registration status starts as
+
+<strong style="color:#d4af37">
+Pending
+</strong>.
+
+Both your student photo and payment receipt
+are saved with the registration.
+
+</div>
+
+</div>
+
+
+<div style="text-align:center;margin:25px 0">
 
 <button
 type="submit"
-class="gold-btn"
->
-SEND REGISTRATION
+class="primary"
+id="submitBtn">
+
+SUBMIT REGISTRATION
+
 </button>
 
 </div>
 
 </form>
 
-<div class="center">
 
-<button
-type="button"
-class="dark-btn"
-onclick="sendTelegram()"
->
-SEND BY TELEGRAM FOR ALVIN
-</button>
+<!-- TELEGRAM SEND AREA -->
 
-</div>
+<div
+id="telegramSendBox"
+class="telegram-send">
 
-</div>
+<h3>
+Registration Saved ✓
+</h3>
 
-<!-- ALVIN -->
+<p>
 
-<div class="alvin-end">
+Your registration and both photos are ready.
 
-<p class="small">
-ADMIN ACCESS
+Tap the button below to open Android sharing,
+choose Telegram, select Alvin
+
+<strong style="color:#d4af37">
+@Alven91
+</strong>
+
+then press Send.
+
 </p>
 
 <button
-type="button"
-class="alvin-btn"
-onclick="openAlvinLogin()"
->
-🔐 ALVIN
-</button>
+class="telegram-btn"
+id="telegramSendBtn"
+onclick="sendRegistrationToTelegram()">
 
-</div>
+✈️ SEND TO ALVIN ON TELEGRAM
 
-<div class="page-nav">
-
-<button class="back-btn"
-onclick="goToPage(6)">
-⬅️ BACK
 </button>
 
 </div>
@@ -1389,53 +1804,149 @@ onclick="goToPage(6)">
 
 </section>
 
-<!-- PAGE 8 DASHBOARD -->
+
+<!-- DASHBOARD -->
 
 <section class="page">
 
-<div class="container">
+<div class="page-inner">
 
-<div class="dashboard-top">
 
-<div>
+<div id="dashboardLogin">
 
-<h2>🔐 ALVIN DASHBOARD</h2>
+<div class="section-title">
 
-<p class="small">
-MARVEL Language Academy Registration Management
+<h2>
+PRIVATE DASHBOARD
+</h2>
+
+<p>
+ALVIN administration area
 </p>
 
 </div>
 
+
+<div class="login-box">
+
+<h2>
+ALVIN LOGIN
+</h2>
+
+<div class="field">
+
+<label>
+Dashboard Password
+</label>
+
+<input
+type="password"
+id="adminPassword"
+placeholder="Enter password">
+
+</div>
+
+
 <button
-class="logout-btn"
-onclick="logoutAlvin()"
->
-LOGOUT
+class="primary"
+style="width:100%;margin-top:18px"
+onclick="loginDashboard()">
+
+LOGIN
+
 </button>
 
 </div>
 
-<div id="dashboardContent">
+</div>
 
-<div class="dashboard-message">
 
-🔒 ALVIN Dashboard is locked.
+<div
+id="dashboardContent"
+class="dashboard">
 
-<br><br>
+<div class="section-title">
 
-Go to Register → touch ALVIN → enter password.
+<h2>
+ALVIN DASHBOARD
+</h2>
+
+<p>
+Online student registrations
+</p>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+
+<span>Total</span>
+
+<strong id="totalCount">
+0
+</strong>
+
+</div>
+
+
+<div class="stat">
+
+<span>Pending</span>
+
+<strong id="pendingCount">
+0
+</strong>
+
+</div>
+
+
+<div class="stat">
+
+<span>Approved</span>
+
+<strong id="approvedCount">
+0
+</strong>
 
 </div>
 
 </div>
 
-<div class="page-nav">
 
-<button class="back-btn"
-onclick="goToPage(7)">
-⬅️ BACK TO REGISTER
+<div class="dashboard-actions">
+
+<button
+class="primary"
+onclick="loadStudents()">
+
+🔄 Refresh
+
 </button>
+
+<button
+class="secondary"
+onclick="logoutDashboard()">
+
+Logout
+
+</button>
+
+</div>
+
+
+<div
+id="students"
+class="students">
+
+<div class="info-box">
+
+No registrations yet.
+
+</div>
+
+</div>
 
 </div>
 
@@ -1445,87 +1956,75 @@ onclick="goToPage(7)">
 
 </div>
 
-<!-- NOTIFICATION -->
 
-<div id="notification"></div>
+<!-- BACK / NEXT -->
 
-<!-- ALVIN LOGIN POPUP -->
-
-<div id="alvinLoginBox">
-
-<div class="alvin-login-content">
-
-<h2>🔐 ALVIN ADMIN</h2>
-
-<p class="small">
-Enter admin password
-</p>
-
-<input
-id="alvinPasswordInput"
-type="password"
-placeholder="Enter password"
->
+<div class="bottom-bar">
 
 <button
-type="button"
-class="login-btn"
-onclick="checkAlvinPassword()"
->
-LOGIN
+class="bottom-btn"
+onclick="previousPage()">
+
+← BACK
+
 </button>
 
 <button
-type="button"
-class="cancel-btn"
-onclick="closeAlvinLogin()"
->
-CANCEL
+class="bottom-btn next"
+onclick="nextPage()">
+
+NEXT →
+
 </button>
 
-<p
-id="alvinLoginError"
-class="login-error"
->
-❌ Wrong password
-</p>
+</div>
 
+
+<div
+id="toast"
+class="toast">
 </div>
 
 </div>
+
 
 <script>
 
-/* ==========================================
+/* =====================================================
    PAGE SYSTEM
-========================================== */
+===================================================== */
 
 let currentPage = 0;
 
 const totalPages = 9;
 
-function goToPage(page){
+const pages =
+document.getElementById("pages");
 
-    if(page < 0){
+const navButtons =
+document.querySelectorAll(".nav-btn");
+
+
+function goTo(page){
+
+    if(page < 0)
         page = 0;
-    }
 
-    if(page >= totalPages){
+    if(page >= totalPages)
         page = totalPages - 1;
-    }
 
     currentPage = page;
 
-    document.getElementById("slider").style.transform =
-        "translateX(-" + (page * 100) + "vw)";
+    pages.style.transform =
+        "translateX(-" +
+        (page * 100) +
+        "%)";
 
-    document
-    .querySelectorAll("#navbar button")
-    .forEach(function(button,index){
+    navButtons.forEach((btn,index)=>{
 
-        button.classList.toggle(
+        btn.classList.toggle(
             "active",
-            index === page
+            index === page && index < 8
         );
 
     });
@@ -1533,205 +2032,259 @@ function goToPage(page){
 }
 
 
-/* ==========================================
-   SWIPE
-========================================== */
+function nextPage(){
 
-let startX = 0;
-
-document.addEventListener(
-    "touchstart",
-    function(e){
-
-        startX =
-            e.changedTouches[0].screenX;
-
-    },
-    {passive:true}
-);
-
-document.addEventListener(
-    "touchend",
-    function(e){
-
-        const endX =
-            e.changedTouches[0].screenX;
-
-        const difference =
-            startX - endX;
-
-        if(Math.abs(difference) < 60){
-            return;
-        }
-
-        if(difference > 0){
-
-            if(currentPage < totalPages - 1){
-
-                goToPage(currentPage + 1);
-
-            }
-
-        }else{
-
-            if(currentPage > 0){
-
-                goToPage(currentPage - 1);
-
-            }
-
-        }
-
-    },
-    {passive:true}
-);
-
-
-/* ==========================================
-   NOTIFICATION
-========================================== */
-
-function notify(message){
-
-    const box =
-        document.getElementById("notification");
-
-    box.textContent = message;
-
-    box.style.display = "block";
-
-    setTimeout(function(){
-
-        box.style.display = "none";
-
-    },3500);
+    if(currentPage < totalPages - 1){
+        goTo(currentPage + 1);
+    }
 
 }
 
 
-/* ==========================================
-   PAYMENT TYPE
-========================================== */
+function previousPage(){
 
-document
-.getElementById("paymentType")
-.addEventListener(
-    "change",
-    function(){
+    if(currentPage > 0){
+        goTo(currentPage - 1);
+    }
 
-        const amount =
-            document.getElementById("amount");
+}
 
-        if(this.value === "First Month"){
 
-            amount.value = "900";
+function openDashboard(){
 
-        }
+    goTo(8);
 
-        if(this.value === "Monthly"){
+}
 
-            amount.value = "800";
 
-        }
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+
+        toast.classList.remove("show");
+
+    },3000);
+
+}
+
+
+/* =====================================================
+   PAYMENT
+===================================================== */
+
+function setAmount(){
+
+    const type =
+        document.getElementById("paymentType").value;
+
+    const amount =
+        document.getElementById("amount");
+
+    if(type === "First Month"){
+
+        amount.value = 900;
 
     }
-);
 
+    else if(type === "Monthly"){
 
-/* ==========================================
-   STUDENT PHOTO PREVIEW
-========================================== */
-
-document
-.getElementById("studentPhoto")
-.addEventListener(
-    "change",
-    function(){
-
-        const file = this.files[0];
-
-        if(!file){
-            return;
-        }
-
-        const box =
-            document.getElementById(
-                "studentPhotoBox"
-            );
-
-        box.innerHTML = "";
-
-        const img =
-            document.createElement("img");
-
-        img.src =
-            URL.createObjectURL(file);
-
-        box.appendChild(img);
+        amount.value = 800;
 
     }
-);
 
+    else{
 
-/* ==========================================
-   RECEIPT PREVIEW
-========================================== */
-
-document
-.getElementById("paymentReceipt")
-.addEventListener(
-    "change",
-    function(){
-
-        const file = this.files[0];
-
-        if(!file){
-            return;
-        }
-
-        const box =
-            document.getElementById(
-                "receiptPhotoBox"
-            );
-
-        box.innerHTML = "";
-
-        const img =
-            document.createElement("img");
-
-        img.src =
-            URL.createObjectURL(file);
-
-        box.appendChild(img);
+        amount.value = "";
 
     }
-);
+
+}
 
 
-/* ==========================================
-   FILE TO DATA URL
-========================================== */
+/* =====================================================
+   UPLOAD
+===================================================== */
 
-function fileToDataURL(file){
+function handleUpload(
+    input,
+    previewId,
+    contentId,
+    fileNameId
+){
 
-    return new Promise(function(resolve,reject){
+    const file =
+        input.files[0];
+
+    const preview =
+        document.getElementById(previewId);
+
+    const content =
+        document.getElementById(contentId);
+
+    const fileName =
+        document.getElementById(fileNameId);
+
+
+    if(!file){
+
+        preview.style.display = "none";
+
+        content.style.display = "block";
+
+        fileName.textContent = "";
+
+        return;
+    }
+
+
+    if(!file.type.startsWith("image/")){
+
+        alert(
+            "Please select an image file."
+        );
+
+        input.value = "";
+
+        return;
+    }
+
+
+    preview.src =
+        URL.createObjectURL(file);
+
+    preview.style.display =
+        "block";
+
+    content.style.display =
+        "none";
+
+    fileName.textContent =
+        "✓ " + file.name;
+
+}
+
+
+/* =====================================================
+   COMPRESS IMAGE
+===================================================== */
+
+function compressImage(
+    file,
+    maxSize = 900,
+    quality = 0.68
+){
+
+    return new Promise((resolve,reject)=>{
 
         const reader =
             new FileReader();
 
-        reader.onload =
-            function(){
 
-                resolve(reader.result);
+        reader.onload = function(e){
+
+            const img =
+                new Image();
+
+
+            img.onload = function(){
+
+                let width =
+                    img.width;
+
+                let height =
+                    img.height;
+
+
+                if(
+                    width > maxSize ||
+                    height > maxSize
+                ){
+
+                    if(width > height){
+
+                        height =
+                            height *
+                            maxSize /
+                            width;
+
+                        width =
+                            maxSize;
+
+                    }
+
+                    else{
+
+                        width =
+                            width *
+                            maxSize /
+                            height;
+
+                        height =
+                            maxSize;
+
+                    }
+
+                }
+
+
+                const canvas =
+                    document.createElement(
+                        "canvas"
+                    );
+
+
+                canvas.width =
+                    Math.round(width);
+
+                canvas.height =
+                    Math.round(height);
+
+
+                const ctx =
+                    canvas.getContext(
+                        "2d"
+                    );
+
+
+                ctx.drawImage(
+                    img,
+                    0,
+                    0,
+                    canvas.width,
+                    canvas.height
+                );
+
+
+                resolve(
+                    canvas.toDataURL(
+                        "image/jpeg",
+                        quality
+                    )
+                );
 
             };
 
-        reader.onerror =
-            function(){
 
-                reject(reader.error);
+            img.onerror = reject;
 
-            };
+            img.src =
+                e.target.result;
+
+        };
+
+
+        reader.onerror = reject;
 
         reader.readAsDataURL(file);
 
@@ -1740,9 +2293,20 @@ function fileToDataURL(file){
 }
 
 
-/* ==========================================
-   REGISTRATION SUBMIT
-========================================== */
+/* =====================================================
+   LAST REGISTRATION FOR TELEGRAM
+===================================================== */
+
+let lastRegistration = null;
+
+let lastStudentPhotoFile = null;
+
+let lastReceiptFile = null;
+
+
+/* =====================================================
+   REGISTRATION
+===================================================== */
 
 document
 .getElementById("registrationForm")
@@ -1752,141 +2316,210 @@ document
 
         e.preventDefault();
 
-        const studentPhoto =
+
+        const submitBtn =
             document.getElementById(
-                "studentPhoto"
-            ).files[0];
-
-        const receipt =
-            document.getElementById(
-                "paymentReceipt"
-            ).files[0];
-
-        if(!studentPhoto){
-
-            notify(
-                "❌ Student photo is required."
+                "submitBtn"
             );
 
-            return;
 
-        }
+        submitBtn.disabled = true;
 
-        if(!receipt){
+        submitBtn.textContent =
+            "SAVING...";
 
-            notify(
-                "❌ Payment receipt is required."
-            );
-
-            return;
-
-        }
-
-        const paymentType =
-            document.getElementById(
-                "paymentType"
-            ).value;
-
-        const amount =
-            Number(
-                document.getElementById(
-                    "amount"
-                ).value
-            );
-
-        if(
-            paymentType === "First Month" &&
-            amount < 900
-        ){
-
-            notify(
-                "❌ First month must be at least 900 Birr."
-            );
-
-            return;
-
-        }
-
-        if(
-            paymentType === "Monthly" &&
-            amount < 800
-        ){
-
-            notify(
-                "❌ Monthly payment must be at least 800 Birr."
-            );
-
-            return;
-
-        }
-
-        const senderName =
-            document.getElementById(
-                "senderName"
-            ).value.trim();
-
-        const transaction =
-            document.getElementById(
-                "transaction"
-            ).value.trim();
-
-        if(!senderName){
-
-            notify(
-                "❌ Sender account name is required."
-            );
-
-            return;
-
-        }
-
-        if(!transaction){
-
-            notify(
-                "❌ Transaction number is required."
-            );
-
-            return;
-
-        }
-
-        notify("⏳ Preparing registration...");
 
         try{
 
-            const studentPhotoData =
-                await fileToDataURL(
-                    studentPhoto
+            /* Normal required fields */
+
+            const requiredIds = [
+
+                "studentName",
+                "age",
+                "phone",
+                "course",
+                "paymentType",
+                "amount",
+                "senderName",
+                "transaction",
+                "emergency"
+
+            ];
+
+
+            for(
+                const id of requiredIds
+            ){
+
+                const element =
+                    document.getElementById(id);
+
+
+                if(
+                    !element.value.trim()
+                ){
+
+                    element.focus();
+
+                    throw new Error(
+                        "Please complete all required fields."
+                    );
+
+                }
+
+            }
+
+
+            /* PHOTO CHECKS */
+
+            const photo =
+                document
+                .getElementById(
+                    "studentPhoto"
+                )
+                .files[0];
+
+
+            const receipt =
+                document
+                .getElementById(
+                    "receipt"
+                )
+                .files[0];
+
+
+            if(!photo){
+
+                throw new Error(
+                    "Please upload the Student Photo."
                 );
 
-            const receiptData =
-                await fileToDataURL(
-                    receipt
+            }
+
+
+            if(!receipt){
+
+                throw new Error(
+                    "Please upload the Payment Receipt Photo."
                 );
+
+            }
+
+
+            const paymentType =
+                document
+                .getElementById(
+                    "paymentType"
+                )
+                .value;
+
+
+            const amount =
+                Number(
+                    document
+                    .getElementById(
+                        "amount"
+                    )
+                    .value
+                );
+
+
+            if(
+                paymentType === "First Month" &&
+                amount !== 900
+            ){
+
+                throw new Error(
+                    "First Month payment must be exactly 900 Birr."
+                );
+
+            }
+
+
+            if(
+                paymentType === "Monthly" &&
+                amount !== 800
+            ){
+
+                throw new Error(
+                    "Monthly payment must be exactly 800 Birr."
+                );
+
+            }
+
+
+            showToast(
+                "Preparing your registration..."
+            );
+
+
+            /*
+             * KEEP ORIGINAL FILE OBJECTS.
+             */
+
+            lastStudentPhotoFile =
+                photo;
+
+            lastReceiptFile =
+                receipt;
+
+
+            const photoData =
+                await compressImage(
+                    photo,
+                    900,
+                    0.68
+                );
+
+
+            const receiptData =
+                await compressImage(
+                    receipt,
+                    1200,
+                    0.65
+                );
+
 
             const registration = {
 
-                id:Date.now(),
+                id:
+                    "MARVEL-" +
+                    Date.now(),
+
+                date:
+                    new Date()
+                    .toLocaleString(),
 
                 studentName:
-                    document.getElementById(
+                    document
+                    .getElementById(
                         "studentName"
-                    ).value.trim(),
+                    )
+                    .value
+                    .trim(),
 
                 age:
-                    document.getElementById(
+                    document
+                    .getElementById(
                         "age"
-                    ).value,
+                    )
+                    .value,
 
                 phone:
-                    document.getElementById(
+                    document
+                    .getElementById(
                         "phone"
-                    ).value.trim(),
+                    )
+                    .value
+                    .trim(),
 
                 course:
-                    document.getElementById(
+                    document
+                    .getElementById(
                         "course"
-                    ).value,
+                    )
+                    .value,
 
                 paymentType:
                     paymentType,
@@ -1895,79 +2528,126 @@ document
                     amount,
 
                 senderName:
-                    senderName,
+                    document
+                    .getElementById(
+                        "senderName"
+                    )
+                    .value
+                    .trim(),
 
                 transaction:
-                    transaction,
+                    document
+                    .getElementById(
+                        "transaction"
+                    )
+                    .value
+                    .trim(),
 
                 emergency:
-                    document.getElementById(
+                    document
+                    .getElementById(
                         "emergency"
-                    ).value.trim(),
+                    )
+                    .value
+                    .trim(),
 
                 message:
-                    document.getElementById(
+                    document
+                    .getElementById(
                         "message"
-                    ).value.trim(),
+                    )
+                    .value
+                    .trim(),
 
                 studentPhoto:
-                    studentPhotoData,
+                    photoData,
 
-                receipt:
+                paymentReceipt:
                     receiptData,
 
+                studentPhotoName:
+                    photo.name,
+
+                receiptName:
+                    receipt.name,
+
                 status:
-                    "Pending",
-
-                notification:
-                    "Your registration is pending approval.",
-
-                date:
-                    new Date().toLocaleString()
+                    "Pending"
 
             };
 
-            let registrations =
+
+            /*
+             * SAVE REGISTRATION
+             */
+
+            let students =
                 JSON.parse(
                     localStorage.getItem(
-                        "marvelRegistrations"
-                    )
-                ) || [];
+                        "marvelStudents"
+                    ) || "[]"
+                );
 
-            registrations.push(
+
+            students.push(
                 registration
             );
 
+
             localStorage.setItem(
-                "marvelRegistrations",
+                "marvelStudents",
                 JSON.stringify(
-                    registrations
+                    students
                 )
             );
 
-            notify(
-                "✅ Registration sent successfully."
+
+            /*
+             * KEEP LAST REGISTRATION
+             */
+
+            lastRegistration =
+                registration;
+
+
+            /*
+             * DO NOT RESET FORM HERE.
+             */
+
+            document
+            .getElementById(
+                "telegramSendBox"
+            )
+            .style.display =
+                "block";
+
+
+            submitBtn.disabled =
+                false;
+
+            submitBtn.textContent =
+                "REGISTRATION SAVED ✓";
+
+
+            showToast(
+                "Registration saved. Photos are ready for Telegram."
             );
 
-            this.reset();
+        }
 
-            document.getElementById(
-                "studentPhotoBox"
-            ).innerHTML =
-                "STUDENT PHOTO";
 
-            document.getElementById(
-                "receiptPhotoBox"
-            ).innerHTML =
-                "RECEIPT PHOTO";
+        catch(error){
 
-        }catch(error){
-
-            console.error(error);
-
-            notify(
-                "❌ Could not save registration."
+            alert(
+                error.message
             );
+
+
+            submitBtn.disabled =
+                false;
+
+            submitBtn.textContent =
+                "SUBMIT REGISTRATION";
 
         }
 
@@ -1975,546 +2655,654 @@ document
 );
 
 
-/* ==========================================
-   TELEGRAM
-========================================== */
+/* =====================================================
+   TELEGRAM SEND
+===================================================== */
 
-function sendTelegram(){
+async function sendRegistrationToTelegram(){
 
-    const name =
-        document.getElementById(
-            "studentName"
-        ).value.trim();
+    if(!lastRegistration){
 
-    const transaction =
-        document.getElementById(
-            "transaction"
-        ).value.trim();
+        alert(
+            "Please submit the registration first."
+        );
 
-    const sender =
-        document.getElementById(
-            "senderName"
-        ).value.trim();
+        return;
+
+    }
+
 
     if(
-        !name ||
-        !transaction ||
-        !sender
+        !lastStudentPhotoFile ||
+        !lastReceiptFile
     ){
 
-        notify(
-            "❌ Complete the required payment information first."
+        alert(
+            "The two photos are not available. Please upload both photos again."
         );
 
         return;
 
     }
 
-    window.open(
-        "https://t.me/Alven91",
-        "_blank"
-    );
 
-}
-
-
-/* ==========================================
-   ALVIN LOGIN
-========================================== */
-
-let alvinLoggedIn = false;
-
-
-function openAlvinLogin(){
-
-    const box =
+    const btn =
         document.getElementById(
-            "alvinLoginBox"
+            "telegramSendBtn"
         );
 
-    const password =
-        document.getElementById(
-            "alvinPasswordInput"
+
+    btn.disabled = true;
+
+    btn.textContent =
+        "PREPARING TELEGRAM...";
+
+
+    try{
+
+        const r =
+            lastRegistration;
+
+
+        const text = `MARVEL LANGUAGE ACADEMY — NEW REGISTRATION
+
+ID: ${r.id}
+
+Student Name: ${r.studentName}
+Age: ${r.age}
+Phone: ${r.phone}
+Course: ${r.course}
+
+Payment Type: ${r.paymentType}
+Amount: ${r.amount} Birr
+Sender Account Name: ${r.senderName}
+Transaction Number: ${r.transaction}
+
+Emergency Contact: ${r.emergency}
+
+Message: ${r.message || "-"}
+
+Status: Pending
+
+Student Photo: ${r.studentPhotoName}
+Payment Receipt: ${r.receiptName}
+
+Please review this registration.
+
+— MARVEL Language Academy & Charity`;
+
+
+        /*
+         * ANDROID WEB SHARE
+         *
+         * Shares BOTH original image files.
+         */
+
+        if(
+            navigator.share &&
+            navigator.canShare
+        ){
+
+            const files = [
+
+                lastStudentPhotoFile,
+                lastReceiptFile
+
+            ];
+
+
+            const shareData = {
+
+                title:
+                    "MARVEL Registration " +
+                    r.id,
+
+                text:
+                    text,
+
+                files:
+                    files
+
+            };
+
+
+            if(
+                navigator.canShare({
+                    files: files
+                })
+            ){
+
+                await navigator.share(
+                    shareData
+                );
+
+
+                showToast(
+                    "Telegram share opened."
+                );
+
+
+                btn.disabled =
+                    false;
+
+                btn.textContent =
+                    "✈️ SEND TO ALVIN ON TELEGRAM";
+
+                return;
+
+            }
+
+        }
+
+
+        /*
+         * FALLBACK
+         *
+         * Opens Alvin's Telegram chat
+         * with the registration text.
+         */
+
+        const telegramText =
+            encodeURIComponent(
+                text
+            );
+
+
+        window.open(
+            "https://t.me/Alven91?text=" +
+            telegramText,
+            "_blank"
         );
 
-    const error =
-        document.getElementById(
-            "alvinLoginError"
+
+        alert(
+            "Telegram ተከፍቷል። እባክዎ የተማሪውን ፎቶ እና የክፍያ ደረሰኝ ፎቶ በTelegram ላይ  (Manually) ያስገቡ ለመመዝገብ ስለሚያስፈልግ ።\n\nTelegram is open. Please manually attach the Student Photo and Payment Receipt Photo."
         );
-
-    box.style.display = "flex";
-
-    password.value = "";
-
-    error.style.display = "none";
-
-    setTimeout(function(){
-
-        password.focus();
-
-    },100);
-
-}
-
-
-function closeAlvinLogin(){
-
-    document.getElementById(
-        "alvinLoginBox"
-    ).style.display = "none";
-
-}
-
-
-function checkAlvinPassword(){
-
-    const password =
-        document.getElementById(
-            "alvinPasswordInput"
-        ).value;
-
-    if(password === "MARVEL 23"){
-
-        alvinLoggedIn = true;
-
-        closeAlvinLogin();
-
-        loadAdminDashboard();
-
-        goToPage(8);
-
-        notify(
-            "✅ Welcome to ALVIN Dashboard."
-        );
-
-    }else{
-
-        document.getElementById(
-            "alvinLoginError"
-        ).style.display = "block";
 
     }
 
-}
+
+    catch(error){
+
+        /*
+         * Cancelled sharing is not
+         * treated as an error.
+         */
+
+        if(
+            error.name !==
+            "AbortError"
+        ){
+
+            console.error(
+                error
+            );
 
 
-/* ENTER KEY FOR PASSWORD */
-
-document
-.getElementById("alvinPasswordInput")
-.addEventListener(
-    "keydown",
-    function(e){
-
-        if(e.key === "Enter"){
-
-            checkAlvinPassword();
+            alert(
+                "Telegram sharing could not be opened. Please try again."
+            );
 
         }
 
     }
-);
 
 
-/* ==========================================
-   LOGOUT
-========================================== */
+    btn.disabled =
+        false;
 
-function logoutAlvin(){
+    btn.textContent =
+        "✈️ SEND TO ALVIN ON TELEGRAM";
 
-    alvinLoggedIn = false;
+}
 
-    document.getElementById(
+
+/* =====================================================
+   DASHBOARD LOGIN
+===================================================== */
+
+const ADMIN_PASSWORD =
+    "MARVEL 23";
+
+
+function loginDashboard(){
+
+    const password =
+        document
+        .getElementById(
+            "adminPassword"
+        )
+        .value;
+
+
+    if(!password){
+
+        alert(
+            "Enter the dashboard password."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        password !==
+        ADMIN_PASSWORD
+    ){
+
+        alert(
+            "Wrong password."
+        );
+
+        return;
+
+    }
+
+
+    sessionStorage.setItem(
+        "marvelAdmin",
+        "true"
+    );
+
+
+    document
+    .getElementById(
+        "dashboardLogin"
+    )
+    .style.display =
+        "none";
+
+
+    document
+    .getElementById(
         "dashboardContent"
-    ).innerHTML =
+    )
+    .style.display =
+        "block";
 
-    '<div class="dashboard-message">' +
-    '🔒 Dashboard locked.' +
-    '<br><br>' +
-    'Go to Register and touch ALVIN ' +
-    'to login again.' +
-    '</div>';
 
-    goToPage(7);
+    loadStudents();
 
-    notify(
-        "🔒 ALVIN logged out."
+}
+
+
+/* =====================================================
+   LOAD STUDENTS
+===================================================== */
+
+function loadStudents(){
+
+    const students =
+        JSON.parse(
+            localStorage.getItem(
+                "marvelStudents"
+            ) || "[]"
+        );
+
+
+    renderStudents(
+        students
     );
 
 }
 
 
-/* ==========================================
-   LOAD DASHBOARD
-========================================== */
+/* =====================================================
+   RENDER STUDENTS
+===================================================== */
 
-function loadAdminDashboard(){
-
-    if(!alvinLoggedIn){
-
-        return;
-
-    }
+function renderStudents(
+    students
+){
 
     const container =
         document.getElementById(
-            "dashboardContent"
+            "students"
         );
 
-    let registrations =
-        JSON.parse(
-            localStorage.getItem(
-                "marvelRegistrations"
-            )
-        ) || [];
 
-    if(registrations.length === 0){
+    const total =
+        students.length;
+
+
+    const pending =
+        students.filter(
+            s =>
+                s.status ===
+                "Pending"
+        ).length;
+
+
+    const approved =
+        students.filter(
+            s =>
+                s.status ===
+                "Approved"
+        ).length;
+
+
+    document.getElementById(
+        "totalCount"
+    ).textContent =
+        total;
+
+
+    document.getElementById(
+        "pendingCount"
+    ).textContent =
+        pending;
+
+
+    document.getElementById(
+        "approvedCount"
+    ).textContent =
+        approved;
+
+
+    if(!students.length){
 
         container.innerHTML =
-
-        '<div class="dashboard-message">' +
-        '📭 No registrations yet.' +
-        '<br><br>' +
-        'Student registrations will appear here.' +
-        '</div>';
+            '<div class="info-box">No registrations yet.</div>';
 
         return;
 
     }
 
-    container.innerHTML = "";
 
-    registrations
+    container.innerHTML =
+        "";
+
+
+    students
     .slice()
     .reverse()
-    .forEach(function(reg){
+    .forEach(
+        student=>{
 
-        const card =
-            document.createElement(
-                "div"
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "student";
+
+
+            card.innerHTML = `
+
+<div class="student-top">
+
+<div class="student-name">
+
+${escapeHtml(
+    student.studentName
+)}
+
+</div>
+
+<div class="status ${escapeHtml(
+    student.status
+)}">
+
+${escapeHtml(
+    student.status
+)}
+
+</div>
+
+</div>
+
+
+<div class="student-content">
+
+<div>
+
+<img
+class="student-photo"
+src="${student.studentPhoto || ""}"
+alt="Student Photo">
+
+
+<img
+class="receipt"
+src="${student.paymentReceipt || ""}"
+alt="Payment Receipt">
+
+</div>
+
+
+<div class="student-info">
+
+${detail(
+    "ID",
+    student.id
+)}
+
+${detail(
+    "Date",
+    student.date
+)}
+
+${detail(
+    "Age",
+    student.age
+)}
+
+${detail(
+    "Phone",
+    student.phone
+)}
+
+${detail(
+    "Course",
+    student.course
+)}
+
+${detail(
+    "Payment",
+    student.paymentType
+)}
+
+${detail(
+    "Amount",
+    student.amount + " Birr"
+)}
+
+${detail(
+    "Sender",
+    student.senderName
+)}
+
+${detail(
+    "Transaction",
+    student.transaction
+)}
+
+${detail(
+    "Emergency",
+    student.emergency
+)}
+
+${detail(
+    "Message",
+    student.message || "-"
+)}
+
+</div>
+
+</div>
+
+
+<div class="student-actions">
+
+<button
+class="small-btn approve"
+onclick="changeStudentStatus(
+'${safeJs(student.id)}',
+'Approved'
+)">
+
+✓ APPROVE
+
+</button>
+
+
+<button
+class="small-btn reject"
+onclick="changeStudentStatus(
+'${safeJs(student.id)}',
+'Rejected'
+)">
+
+✕ REJECT
+
+</button>
+
+
+<button
+class="small-btn pending-btn"
+onclick="changeStudentStatus(
+'${safeJs(student.id)}',
+'Pending'
+)">
+
+↻ PENDING
+
+</button>
+
+
+<button
+class="small-btn delete"
+onclick="deleteStudent(
+'${safeJs(student.id)}'
+)">
+
+🗑 DELETE
+
+</button>
+
+</div>
+
+`;
+
+
+            container.appendChild(
+                card
             );
 
-        card.className =
-            "registration-card";
-
-        let statusClass =
-            "status-pending";
-
-        if(reg.status === "Approved"){
-
-            statusClass =
-                "status-approved";
-
         }
-
-        if(reg.status === "Rejected"){
-
-            statusClass =
-                "status-rejected";
-
-        }
-
-        card.innerHTML =
-
-        '<div class="registration-header">' +
-
-            '<div>' +
-
-                '<h3>' +
-                    'Registration #' +
-                    escapeHTML(reg.id) +
-                '</h3>' +
-
-                '<p class="small">' +
-                    'Submitted: ' +
-                    escapeHTML(reg.date) +
-                '</p>' +
-
-            '</div>' +
-
-            '<span class="status ' +
-                statusClass +
-            '">' +
-                escapeHTML(reg.status) +
-            '</span>' +
-
-        '</div>' +
-
-        '<div class="dashboard-grid">' +
-
-            '<div class="dashboard-panel">' +
-
-                '<h3>👤 Student Information</h3>' +
-
-                '<div class="info-row">' +
-                    '<span class="info-label">Full Name:</span> ' +
-                    escapeHTML(reg.studentName) +
-                '</div>' +
-
-                '<div class="info-row">' +
-                    '<span class="info-label">Age:</span> ' +
-                    escapeHTML(reg.age) +
-                '</div>' +
-
-                '<div class="info-row">' +
-                    '<span class="info-label">Phone:</span> ' +
-                    escapeHTML(reg.phone) +
-                '</div>' +
-
-                '<div class="info-row">' +
-                    '<span class="info-label">Course:</span> ' +
-                    escapeHTML(reg.course) +
-                '</div>' +
-
-                '<div class="info-row">' +
-                    '<span class="info-label">Emergency Contact:</span> ' +
-                    escapeHTML(reg.emergency) +
-                '</div>' +
-
-                '<br>' +
-
-                '<h3>📸 Student Photo</h3>' +
-
-                '<img class="dashboard-photo" ' +
-                    'src="' + reg.studentPhoto + '" ' +
-                    'alt="Student Photo">' +
-
-            '</div>' +
-
-            '<div class="dashboard-panel">' +
-
-                '<h3>💳 Payment Information</h3>' +
-
-                '<div class="info-row">' +
-                    '<span class="info-label">Payment Type:</span> ' +
-                    escapeHTML(reg.paymentType) +
-                '</div>' +
-
-                '<div class="info-row">' +
-                    '<span class="info-label">Amount Paid:</span> ' +
-                    escapeHTML(String(reg.amount)) +
-                    ' Birr' +
-                '</div>' +
-
-                '<div class="info-row">' +
-                    '<span class="info-label">Sender Account Name:</span> ' +
-                    escapeHTML(reg.senderName) +
-                '</div>' +
-
-                '<div class="info-row">' +
-                    '<span class="info-label">Transaction:</span> ' +
-                    escapeHTML(reg.transaction) +
-                '</div>' +
-
-                '<br>' +
-
-                '<h3>🧾 Payment Receipt</h3>' +
-
-                '<img class="dashboard-photo" ' +
-                    'src="' + reg.receipt + '" ' +
-                    'alt="Payment Receipt">' +
-
-            '</div>' +
-
-        '</div>' +
-
-        '<div class="dashboard-panel dashboard-bottom">' +
-
-            '<h3>📝 Student Message</h3>' +
-
-            '<p>' +
-                escapeHTML(
-                    reg.message || "No message"
-                ) +
-            '</p>' +
-
-            '<br>' +
-
-            '<h3>🔔 Notification</h3>' +
-
-            '<p class="gold">' +
-                escapeHTML(
-                    reg.notification
-                ) +
-            '</p>' +
-
-        '</div>' +
-
-        '<div class="admin-actions">' +
-
-            '<button class="approve-btn" ' +
-                'onclick="approveRegistration(' +
-                    reg.id +
-                ')">' +
-                '✅ APPROVE' +
-            '</button>' +
-
-            '<button class="reject-btn" ' +
-                'onclick="rejectRegistration(' +
-                    reg.id +
-                ')">' +
-                '❌ REJECT' +
-            '</button>' +
-
-            '<button class="delete-btn" ' +
-                'onclick="deleteRegistration(' +
-                    reg.id +
-                ')">' +
-                '🗑 DELETE' +
-            '</button>' +
-
-        '</div>';
-
-        container.appendChild(card);
-
-    });
+    );
 
 }
 
 
-/* ==========================================
-   APPROVE
-========================================== */
+/* =====================================================
+   DETAIL
+===================================================== */
 
-function approveRegistration(id){
+function detail(
+    label,
+    value
+){
 
-    if(!alvinLoggedIn){
+    return `
 
-        notify(
-            "🔒 Please login first."
-        );
+<div class="detail">
 
-        return;
+<small>
 
-    }
+${escapeHtml(label)}
 
-    let registrations =
+</small>
+
+<span>
+
+${escapeHtml(
+    value == null
+    ? ""
+    : String(value)
+)}
+
+</span>
+
+</div>
+
+`;
+
+}
+
+
+/* =====================================================
+   CHANGE STATUS
+===================================================== */
+
+function changeStudentStatus(
+    id,
+    status
+){
+
+    let students =
         JSON.parse(
             localStorage.getItem(
-                "marvelRegistrations"
-            )
-        ) || [];
-
-    const registration =
-        registrations.find(
-            function(item){
-                return item.id === id;
-            }
+                "marvelStudents"
+            ) || "[]"
         );
 
-    if(!registration){
 
-        notify(
-            "❌ Registration not found."
+    const index =
+        students.findIndex(
+            s =>
+                String(s.id) ===
+                String(id)
+        );
+
+
+    if(index === -1){
+
+        alert(
+            "Student not found."
         );
 
         return;
 
     }
 
-    registration.status =
-        "Approved";
 
-    registration.notification =
-        "Your registration has been approved.";
+    students[index].status =
+        status;
+
 
     localStorage.setItem(
-        "marvelRegistrations",
+        "marvelStudents",
         JSON.stringify(
-            registrations
+            students
         )
     );
 
-    loadAdminDashboard();
 
-    notify(
-        "✅ Registration approved."
+    showToast(
+        "Student status updated."
     );
+
+
+    loadStudents();
 
 }
 
 
-/* ==========================================
-   REJECT
-========================================== */
-
-function rejectRegistration(id){
-
-    if(!alvinLoggedIn){
-
-        notify(
-            "🔒 Please login first."
-        );
-
-        return;
-
-    }
-
-    let registrations =
-        JSON.parse(
-            localStorage.getItem(
-                "marvelRegistrations"
-            )
-        ) || [];
-
-    const registration =
-        registrations.find(
-            function(item){
-                return item.id === id;
-            }
-        );
-
-    if(!registration){
-
-        notify(
-            "❌ Registration not found."
-        );
-
-        return;
-
-    }
-
-    registration.status =
-        "Rejected";
-
-    registration.notification =
-        "Your registration has been rejected.";
-
-    localStorage.setItem(
-        "marvelRegistrations",
-        JSON.stringify(
-            registrations
-        )
-    );
-
-    loadAdminDashboard();
-
-    notify(
-        "❌ Registration rejected."
-    );
-
-}
-
-
-/* ==========================================
+/* =====================================================
    DELETE
-========================================== */
+===================================================== */
 
-function deleteRegistration(id){
-
-    if(!alvinLoggedIn){
-
-        notify(
-            "🔒 Please login first."
-        );
-
-        return;
-
-    }
+function deleteStudent(
+    id
+){
 
     if(
         !confirm(
-            "Are you sure you want to delete this registration?"
+            "Delete this registration?"
         )
     ){
 
@@ -2522,57 +3310,137 @@ function deleteRegistration(id){
 
     }
 
-    let registrations =
+
+    let students =
         JSON.parse(
             localStorage.getItem(
-                "marvelRegistrations"
-            )
-        ) || [];
-
-    registrations =
-        registrations.filter(
-            function(item){
-                return item.id !== id;
-            }
+                "marvelStudents"
+            ) || "[]"
         );
 
+
+    students =
+        students.filter(
+            s =>
+                String(s.id) !==
+                String(id)
+        );
+
+
     localStorage.setItem(
-        "marvelRegistrations",
+        "marvelStudents",
         JSON.stringify(
-            registrations
+            students
         )
     );
 
-    loadAdminDashboard();
 
-    notify(
-        "🗑 Registration deleted."
+    showToast(
+        "Registration deleted."
+    );
+
+
+    loadStudents();
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logoutDashboard(){
+
+    sessionStorage.removeItem(
+        "marvelAdmin"
+    );
+
+
+    document
+    .getElementById(
+        "dashboardContent"
+    )
+    .style.display =
+        "none";
+
+
+    document
+    .getElementById(
+        "dashboardLogin"
+    )
+    .style.display =
+        "block";
+
+
+    document
+    .getElementById(
+        "adminPassword"
+    )
+    .value =
+        "";
+
+}
+
+
+/* =====================================================
+   SECURITY HELPERS
+===================================================== */
+
+function escapeHtml(
+    text
+){
+
+    return String(
+        text ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
     );
 
 }
 
 
-/* ==========================================
-   SAFE TEXT DISPLAY
-========================================== */
+function safeJs(
+    text
+){
 
-function escapeHTML(value){
-
-    return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    return String(
+        text ?? ""
+    )
+    .replace(
+        /\\/g,
+        "\\\\"
+    )
+    .replace(
+        /'/g,
+        "\\'"
+    );
 
 }
 
 
-/* ==========================================
-   START ON HOME
-========================================== */
+/* =====================================================
+   START
+===================================================== */
 
-goToPage(0);
+goTo(0);
 
 </script>
 
