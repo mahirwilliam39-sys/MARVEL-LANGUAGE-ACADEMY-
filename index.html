@@ -1,0 +1,3095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARVEL Language Academy & Charity</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Inter", Arial, sans-serif;
+    background:#080808 !important;
+    color:#f5f5f5;
+    overflow-x:hidden;
+}
+
+.page{
+    background:#080808 !important;
+    color:#f5f5f5;
+}    
+
+button,
+input,
+select,
+textarea{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* ================= NAVIGATION ================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:70px;
+    z-index:1000;
+    background:rgba(5,5,5,.97);
+    border-bottom:1px solid #d4af37;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:8px;
+}
+
+.nav-inner{
+    width:100%;
+    max-width:1200px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.logo{
+    color:#d4af37;
+    font-weight:900;
+    font-size:21px;
+    letter-spacing:2px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.nav-links::-webkit-scrollbar{
+    display:none;
+}
+
+.nav-links button{
+    border:0;
+    background:transparent;
+    color:#ddd;
+    padding:10px 9px;
+    border-radius:8px;
+    white-space:nowrap;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.nav-links button:hover,
+.nav-links button.active{
+    background:#d4af37;
+    color:#080808;
+}
+
+/* ================= PAGES ================= */
+
+.page{
+    display:none;
+    min-height:100vh;
+    padding:100px 18px 145px;
+    animation:fade .25s ease;
+}
+
+.page.active{
+    display:block;
+}
+
+@keyframes fade{
+    from{opacity:0;transform:translateY(5px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.hero{
+    min-height:70vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.hero-box{
+    max-width:800px;
+}
+
+.kicker{
+    color:#d4af37;
+    font-weight:bold;
+    letter-spacing:3px;
+    font-size:13px;
+    margin-bottom:14px;
+}
+
+h1{
+    color:#d4af37;
+    font-size:clamp(45px,12vw,90px);
+    letter-spacing:8px;
+    line-height:1;
+    margin-bottom:12px;
+}
+
+h2{
+    color:#d4af37;
+    font-size:clamp(27px,6vw,45px);
+    margin-bottom:15px;
+}
+
+h3{
+    color:#d4af37;
+    margin-bottom:10px;
+}
+
+.hero h2{
+    font-size:clamp(24px,5vw,40px);
+}
+
+p{
+    color:#ccc;
+    line-height:1.7;
+}
+
+.hero p{
+    font-size:17px;
+    max-width:680px;
+    margin:0 auto 25px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.gold-btn,
+.dark-btn{
+    border-radius:10px;
+    padding:13px 20px;
+    font-weight:800;
+    border:1px solid #d4af37;
+}
+
+.gold-btn{
+    background:#d4af37;
+    color:#080808;
+}
+
+.dark-btn{
+    background:#111;
+    color:#d4af37;
+}
+
+.gold-btn:hover{
+    background:#f0d56b;
+}
+
+/* ================= CARDS ================= */
+
+.section-title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.card{
+    background:#101010;
+    border:1px solid #292929;
+    border-radius:15px;
+    padding:25px;
+    transition:.2s;
+}
+
+.card:hover{
+    border-color:#d4af37;
+    transform:translateY(-2px);
+}
+
+.icon{
+    font-size:35px;
+    margin-bottom:13px;
+}
+
+.card p{
+    font-size:14px;
+}
+
+/* ================= LEADER ================= */
+
+.leader-card{
+    max-width:650px;
+    margin:auto;
+    text-align:center;
+    background:#101010;
+    border:1px solid #d4af37;
+    border-radius:18px;
+    padding:35px 20px;
+}
+
+.avatar{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    margin:0 auto 18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#d4af37;
+    color:#080808;
+    font-size:40px;
+    font-weight:900;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.contact-item{
+    display:block;
+    background:#111;
+    border:1px solid #292929;
+    border-radius:12px;
+    padding:18px;
+}
+
+.contact-item strong{
+    display:block;
+    color:#d4af37;
+    margin-bottom:5px;
+}
+
+/* ================= REGISTER ================= */
+
+.form-card{
+    max-width:850px;
+    margin:auto;
+    background:#0f0f0f;
+    border:1px solid #333;
+    border-radius:18px;
+    padding:20px;
+}
+
+.form-section{
+    border:1px solid #292929;
+    border-radius:14px;
+    padding:18px;
+    margin-bottom:18px;
+}
+
+.form-section h3{
+    margin-bottom:18px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.field{
+    margin-bottom:3px;
+}
+
+.field.full{
+    grid-column:1/-1;
+}
+
+label{
+    display:block;
+    color:#ddd;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.required{
+    color:#d4af37;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    background:#080808;
+    color:#fff;
+    border:1px solid #3a3a3a;
+    border-radius:9px;
+    padding:12px;
+    outline:none;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#d4af37;
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+select option{
+    background:#111;
+}
+
+/* PAYMENT RULES */
+
+.payment-rules{
+    margin-top:15px;
+    padding:14px;
+    border-left:3px solid #d4af37;
+    background:#171717;
+    color:#ccc;
+    line-height:1.7;
+    font-size:13px;
+}
+
+/* ================= PHOTO UPLOAD ================= */
+
+.upload-box{
+    border:1px dashed #555;
+    background:#090909;
+    border-radius:13px;
+    padding:20px;
+    text-align:center;
+    margin-top:10px;
+}
+
+.upload-icon{
+    font-size:35px;
+    margin-bottom:8px;
+}
+
+.upload-label{
+    display:inline-block;
+    color:#d4af37;
+    font-weight:bold;
+    border:1px solid #d4af37;
+    border-radius:9px;
+    padding:10px 16px;
+    cursor:pointer;
+    margin:8px 0;
+}
+
+.upload-box input[type=file]{
+    display:none;
+}
+
+.upload-help{
+    font-size:11px;
+    color:#888;
+}
+
+.preview{
+    display:none;
+    max-width:170px;
+    max-height:170px;
+    margin:15px auto 0;
+    border-radius:10px;
+    border:1px solid #d4af37;
+    object-fit:cover;
+}
+
+.file-name{
+    color:#bbb;
+    font-size:12px;
+    margin-top:7px;
+    word-break:break-word;
+}
+
+/* ================= WARNING ================= */
+
+.warning-box{
+    margin:18px 0 15px;
+    padding:14px 15px;
+    background:rgba(212,175,55,.07);
+    border:1px solid #d4af37;
+    border-radius:12px;
+}
+
+.warning-title{
+    color:#d4af37;
+    font-weight:900;
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.warning-box p{
+    font-size:12px;
+    line-height:1.6;
+    margin:6px 0;
+}
+
+.warning-note{
+    color:#bbb;
+    font-size:11px;
+    line-height:1.5;
+}
+
+/* ================= SUBMIT ================= */
+
+.submit-area{
+    text-align:center;
+    margin-top:20px;
+}
+
+.submit-btn{
+    width:100%;
+    max-width:500px;
+    padding:16px;
+    border:0;
+    border-radius:12px;
+    background:#d4af37;
+    color:#080808;
+    font-weight:900;
+    font-size:16px;
+}
+
+.submit-btn:hover{
+    background:#f0d56b;
+}
+
+.submit-btn:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+/* ================= TELEGRAM BOX ================= */
+
+.telegram-send{
+    display:none;
+    margin-top:22px;
+    padding:20px;
+    border:1px solid #d4af37;
+    border-radius:15px;
+    background:#101010;
+    text-align:center;
+}
+
+.telegram-send h3{
+    color:#d4af37;
+}
+
+.telegram-send p{
+    font-size:13px;
+    margin-bottom:15px;
+}
+
+.telegram-btn{
+    width:100%;
+    max-width:430px;
+    padding:15px;
+    border:0;
+    border-radius:11px;
+    background:#229ED9;
+    color:#fff;
+    font-weight:900;
+}
+
+.telegram-btn:disabled{
+    opacity:.5;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:3000;
+    background:rgba(0,0,0,.78);
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-card{
+    width:100%;
+    max-width:500px;
+    background:#101010;
+    border:1px solid #d4af37;
+    border-radius:17px;
+    padding:23px;
+    box-shadow:0 15px 50px rgba(0,0,0,.6);
+}
+
+.modal-card h3{
+    color:#d4af37;
+    margin-bottom:12px;
+}
+
+.modal-card p{
+    font-size:13px;
+    margin:8px 0;
+}
+
+.modal-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+    margin-top:20px;
+}
+
+.ok-btn{
+    background:#d4af37;
+    color:#080808;
+    border:0;
+    border-radius:9px;
+    padding:11px 24px;
+    font-weight:900;
+}
+
+/* ================= DASHBOARD ================= */
+
+.login-card,
+.dashboard{
+    max-width:950px;
+    margin:auto;
+}
+
+.login-card{
+    max-width:500px;
+    background:#101010;
+    border:1px solid #d4af37;
+    border-radius:17px;
+    padding:25px;
+}
+
+.login-card input{
+    margin:10px 0 15px;
+}
+
+.dashboard{
+    display:none;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:20px 0;
+}
+
+.stat{
+    background:#111;
+    border:1px solid #292929;
+    border-radius:12px;
+    padding:18px;
+    text-align:center;
+}
+
+.stat strong{
+    display:block;
+    color:#d4af37;
+    font-size:28px;
+    margin-top:5px;
+}
+
+.admin-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+}
+
+.student-card{
+    background:#101010;
+    border:1px solid #303030;
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:15px;
+}
+
+.student-card.pending{
+    border-color:#d4af37;
+}
+
+.student-card.approved{
+    border-color:#3aa76d;
+}
+
+.student-card.rejected{
+    border-color:#a94442;
+}
+
+.student-head{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.status{
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:bold;
+    background:#333;
+}
+
+.status.pending{
+    color:#d4af37;
+}
+
+.status.approved{
+    color:#6ee7a2;
+}
+
+.status.rejected{
+    color:#ff8d8d;
+}
+
+.student-info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    font-size:12px;
+    color:#bbb;
+}
+
+.admin-photos{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:15px;
+}
+
+.admin-photos img{
+    width:100%;
+    max-height:230px;
+    object-fit:contain;
+    background:#050505;
+    border-radius:10px;
+    border:1px solid #292929;
+}
+
+.admin-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:15px;
+}
+
+.admin-buttons button{
+    border:1px solid #444;
+    border-radius:8px;
+    padding:9px 12px;
+    background:#171717;
+    color:#ddd;
+}
+
+.admin-buttons .approve{
+    border-color:#3aa76d;
+    color:#6ee7a2;
+}
+
+.admin-buttons .reject{
+    border-color:#a94442;
+    color:#ff8d8d;
+}
+
+.empty{
+    text-align:center;
+    color:#777;
+    padding:30px;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    z-index:900;
+    min-height:72px;
+    background:rgba(5,5,5,.98);
+    border-top:1px solid #292929;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:8px 12px;
+}
+
+.bottom-inner{
+    width:100%;
+    max-width:850px;
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.bottom-nav button{
+    flex:1;
+    max-width:180px;
+    padding:11px 14px;
+    border-radius:9px;
+    border:1px solid #333;
+    background:#111;
+    color:#d4af37;
+    font-weight:bold;
+}
+
+.bottom-nav button:disabled{
+    opacity:.25;
+}
+
+.created{
+    text-align:center;
+    color:#555;
+    font-size:11px;
+    margin-top:40px;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:95px;
+    transform:translateX(-50%);
+    z-index:5000;
+    background:#d4af37;
+    color:#080808;
+    padding:12px 17px;
+    border-radius:10px;
+    font-size:12px;
+    font-weight:bold;
+    display:none;
+    max-width:90%;
+    text-align:center;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
+    .navbar{
+        height:64px;
+    }
+
+    .nav-inner{
+        flex-direction:column;
+        gap:2px;
+    }
+
+    .logo{
+        font-size:15px;
+        height:18px;
+    }
+
+    .nav-links{
+        width:100%;
+        justify-content:flex-start;
+    }
+
+    .nav-links button{
+        font-size:10px;
+        padding:7px 8px;
+    }
+
+    .page{
+        padding-top:92px;
+        padding-bottom:135px;
+    }
+
+    .grid,
+    .form-grid,
+    .contact-grid,
+    .student-info{
+        grid-template-columns:1fr;
+    }
+
+    .field.full{
+        grid-column:auto;
+    }
+
+    .stats{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .stat{
+        padding:12px 5px;
+    }
+
+    .stat strong{
+        font-size:22px;
+    }
+
+    .admin-photos{
+        grid-template-columns:1fr;
+    }
+
+    .student-head{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .bottom-nav{
+        min-height:70px;
+    }
+
+    .bottom-nav button{
+        padding:10px 5px;
+        font-size:11px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= TOP NAV ================= -->
+
+<nav class="navbar">
+    <div class="nav-inner">
+
+        <div class="logo">MARVEL</div>
+
+        <div class="nav-links">
+
+            <button onclick="showPage('home',this)">HOME</button>
+            <button onclick="showPage('academy',this)">ACADEMY</button>
+            <button onclick="showPage('charity',this)">CHARITY</button>
+            <button onclick="showPage('leader',this)">LEADER</button>
+            <button onclick="showPage('about',this)">ABOUT</button>
+            <button onclick="showPage('donate',this)">DONATE</button>
+            <button onclick="showPage('contact',this)">CONTACT</button>
+            <button onclick="showPage('register',this)">REGISTER</button>
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- ================= HOME ================= -->
+
+<section class="page active" id="home">
+
+    <div class="container hero">
+
+        <div class="hero-box">
+
+            <div class="kicker">
+                LANGUAGE • EDUCATION • CHARITY
+            </div>
+
+            <h1>MARVEL</h1>
+
+            <h2>Language Academy & Charity</h2>
+
+            <p>
+                Learn English. Build confidence. Improve communication.
+                Support education and help the community.
+            </p>
+
+            <div class="buttons">
+
+                <button class="gold-btn"
+                        onclick="showPage('academy')">
+                    Explore Academy
+                </button>
+
+                <button class="dark-btn"
+                        onclick="showPage('register')">
+                    Register Now
+                </button>
+
+            </div>
+
+            <div class="created">
+                Created by Mahir
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ACADEMY ================= -->
+
+<section class="page" id="academy">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>ACADEMY</h2>
+            <p>Build useful skills for life and communication.</p>
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+                <div class="icon">🗣️</div>
+                <h3>Speaking</h3>
+                <p>
+                    Practice speaking clearly and confidently
+                    in everyday situations.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">💬</div>
+                <h3>Communication</h3>
+                <p>
+                    Learn how to express ideas, listen actively
+                    and communicate effectively.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">📚</div>
+                <h3>Grammar & Vocabulary</h3>
+                <p>
+                    Improve grammar, vocabulary, sentence structure
+                    and practical English.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">👑</div>
+                <h3>Leadership</h3>
+                <p>
+                    Develop presentation, leadership and
+                    confidence skills.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CHARITY ================= -->
+
+<section class="page" id="charity">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>CHARITY</h2>
+            <p>Education and community support.</p>
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+                <div class="icon">🎓</div>
+                <h3>Education</h3>
+                <p>
+                    Supporting learning opportunities and
+                    educational development.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🤝</div>
+                <h3>Community</h3>
+                <p>
+                    Encouraging cooperation and positive
+                    community activities.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">❤️</div>
+                <h3>Support</h3>
+                <p>
+                    Helping people through education, skills
+                    and community initiatives.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🌍</div>
+                <h3>Impact</h3>
+                <p>
+                    Creating opportunities through knowledge,
+                    confidence and service.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LEADER ================= -->
+
+<section class="page" id="leader">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>LEADER</h2>
+            <p>Meet the academy and charity leader.</p>
+        </div>
+
+        <div class="leader-card">
+
+            <div class="avatar">A</div>
+
+            <h2>Sewale Nigusie</h2>
+
+            <p style="color:#d4af37;font-weight:bold;">
+                ALVIN • Teacher & Charity Leader
+            </p>
+
+            <p style="margin-top:15px;">
+                Dedicated to education, English learning,
+                communication skills and community support.
+            </p>
+
+            <p style="margin-top:15px;">
+                📍 Dessie, Tekuam, Ethiopia
+            </p>
+
+            <p>
+                📞 +251 953 811 056
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="page" id="about">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>ABOUT</h2>
+            <p>What MARVEL stands for.</p>
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>Our Mission</h3>
+                <p>
+                    MARVEL Language Academy & Charity aims to
+                    provide useful language and communication
+                    education while supporting positive community
+                    development.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Our Vision</h3>
+                <p>
+                    To encourage confident learners who can
+                    communicate, lead and contribute positively
+                    to their communities.
+                </p>
+            </div>
+
+            <div class="card" style="grid-column:1/-1;">
+                <h3>Our Values</h3>
+                <p>
+                    Education • Confidence • Communication •
+                    Leadership • Service • Community
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DONATE ================= -->
+
+<section class="page" id="donate">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>DONATE</h2>
+            <p>Support education and community activities.</p>
+        </div>
+
+        <div class="card">
+
+            <h3>Donation Information</h3>
+
+            <p>
+                Donations can support educational and community
+                activities of MARVEL Language Academy & Charity.
+            </p>
+
+            <br>
+
+            <h3>Bank Donation</h3>
+
+            <p>
+                Please contact ALVIN directly to know more about 
+                donation/payment instructions and confirmation.                
+            </p>
+
+            <br>
+            <h3>PAYMENT AND CHARITY ACCOUNT </h3>
+            
+            <p>   
+ Bank name:<h3>CBE</h3>account: <h3>1000448298217</h3>
+         
+       
+       
+       
+  Account name:<h3>sewale ngussie asfaw</h3>          
+            </p>
+            
+            
+            <button class="gold-btn"
+                    onclick="showPage('contact')">
+                Contact ALVIN
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="page" id="contact">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>CONTACT</h2>
+            <p>Connect with MARVEL.</p>
+        </div>
+
+        <div class="contact-grid">
+
+            <a class="contact-item"
+               href="https://t.me/Alven91"
+               target="_blank">
+                <strong>Telegram</strong>
+                @Alven91
+            </a>
+
+            <a class="contact-item"
+               href="https://www.tiktok.com/@sewalih"
+               target="_blank">
+                <strong>TikTok</strong>
+                @sewalih
+            </a>
+
+            <a class="contact-item"
+               href="https://www.instagram.com/horse.64937709"
+               target="_blank">
+                <strong>Instagram</strong>
+                @horse.64937709
+            </a>
+
+            <a class="contact-item"
+               href="https://x.com/NgussieSew78022"
+               target="_blank">
+                <strong>X</strong>
+                @NgussieSew78022
+            </a>
+          <a class="contact-item"
+herf="phone"               
+            target="_to talk with marvel teacher ">
+            <strong>phone number </strong>
+          0953811056 
+           </a>   
+        
+
+    </div>
+
+</section>
+
+
+<!-- ================= REGISTER ================= -->
+
+<section class="page" id="register">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>ONLINE REGISTRATION</h2>
+            <p>
+                Complete the form and submit your registration.
+            </p>
+        </div>
+
+        <div class="form-card">
+
+            <form id="registrationForm">
+
+                <!-- PERSONAL -->
+
+                <div class="form-section">
+
+                    <h3>Personal Information</h3>
+
+                    <div class="form-grid">
+
+                        <div class="field">
+                            <label>
+                                Student Name/ስም <span class="required">*</span>
+                            </label>
+
+                            <input
+                                id="studentName"
+                                type="text"
+                                required
+                                placeholder="Enter full name">
+                        </div>
+
+                        <div class="field">
+                            <label>
+                                Age/እድሜ <span class="required">*</span>
+                            </label>
+
+                            <input
+                                id="age"
+                                type="number"
+                                min="1"
+                                max="100"
+                                required
+                                placeholder="Age">
+                        </div>
+
+                        <div class="field">
+                            <label>
+                                Phone Number/ስልክ ቁጥር <span class="required">*</span>
+                            </label>
+
+                            <input
+                                id="phone"
+                                type="tel"
+                                required
+                                placeholder="+251...">
+                        </div>
+
+                        <div class="field">
+
+                            <label>
+                                Course <span class="required">*</span>
+                            </label>
+
+                            <select id="course" required>
+
+                                <option value="">
+                                    Select course
+                                </option>
+
+                                <option>
+                                    English Language
+                                </option>
+
+                                <option>
+                                    Speaking & Communication
+                                </option>
+
+                                <option>
+                                    Grammar & Vocabulary
+                                </option>
+
+                                <option>
+                                    Leadership & Presentation
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PAYMENT -->
+
+                <div class="form-section">
+
+                    <h3>Payment Information</h3>
+
+                    <div class="form-grid">
+
+                        <div class="field">
+
+                            <label>
+                                Payment Type
+                                <span class="required">*</span>
+                            </label>
+
+                            <select id="paymentType" required>
+
+                                <option value="">
+                                    Select payment
+                                </option>
+
+                                <option value="first">
+                                    First Month — 900 Birr
+                                </option>
+
+                                <option value="monthly">
+                                    Monthly — 800 Birr
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="field">
+
+                            <label>
+                                Amount <span class="required">*</span>
+                            </label>
+
+                            <input
+                                id="amount"
+                                type="number"
+                                readonly
+                                required
+                                placeholder="Select payment type">
+
+                        </div>
+
+                        <div class="field">
+
+                            <label>
+                                Sender Account Name
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                id="senderName"
+                                type="text"
+                                required
+                                placeholder="Account holder name">
+
+                        </div>
+
+                        <div class="field">
+
+                            <label>
+                                Transaction Number
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                id="transaction"
+                                type="text"
+                                required
+                                placeholder="Transaction number">
+
+                        </div>
+
+                    </div>
+
+                    <div class="payment-rules">
+
+                        <strong style="color:#d4af37;">
+                            Payment Rules
+                        </strong>
+
+                        <br>
+
+                        First Month:
+                        <strong style="color:#fff;">
+                            900 Birr
+                        </strong>
+                        (100 Birr registration +
+                        800 Birr course)
+
+                        <br>
+
+                        Following months:
+                        <strong style="color:#fff;">
+                            800 Birr
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMERGENCY -->
+
+                <div class="form-section">
+
+                    <h3>Emergency Contact</h3>
+
+                    <div class="field">
+
+                        <label>
+                            Emergency Contact
+                            <span class="required">*</span>
+                        </label>
+
+                        <input
+                            id="emergency"
+                            type="text"
+                            required
+                            placeholder="Name and phone number">
+
+                    </div>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <div class="form-section">
+
+                    <h3>Additional Message</h3>
+
+                    <div class="field">
+
+                        <label>Message</label>
+
+                        <textarea
+                            id="message"
+                            placeholder="Optional message"></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STUDENT PHOTO -->
+
+                <div class="form-section">
+
+                    <h3>Student Photo</h3>
+
+                    <div class="upload-box">
+
+                        <div class="upload-icon">📷</div>
+
+                        <label class="upload-label"
+                               for="studentPhoto">
+                            Upload Student Photo
+                        </label>
+
+                        <input
+                            id="studentPhoto"
+                            type="file"
+                            accept="image/*">
+
+                        <div class="upload-help">
+                            Optional — you may upload it here
+                        </div>
+
+                        <img
+                            id="studentPreview"
+                            class="preview"
+                            alt="Student Photo Preview">
+
+                        <div
+                            id="studentFileName"
+                            class="file-name">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECEIPT -->
+
+                <div class="form-section">
+
+                    <h3>Payment Receipt</h3>
+
+                    <div class="upload-box">
+
+                        <div class="upload-icon">🧾</div>
+
+                        <label class="upload-label"
+                               for="receipt">
+                            Upload Payment Receipt
+                        </label>
+
+                        <input
+                            id="receipt"
+                            type="file"
+                            accept="image/*">
+
+                        <div class="upload-help">
+                            Optional — you may upload it here
+                        </div>
+
+                        <img
+                            id="receiptPreview"
+                            class="preview"
+                            alt="Receipt Preview">
+
+                        <div
+                            id="receiptFileName"
+                            class="file-name">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DEVICE STORAGE -->
+
+                <div class="form-section">
+
+                    <p style="font-size:12px;">
+
+                        Your registration will be saved on this device.
+
+                        The registration status starts as
+                        <strong style="color:#d4af37;">
+                            Pending
+                        </strong>.
+
+                        <br><br>
+
+                        Student photo and payment receipt are optional
+                        on the website.
+
+                        <br><br>
+
+                        ⚠️ Before sending through Telegram, both
+                        Student Photo and Payment Receipt must be
+                        attached.
+
+                    </p>
+
+                </div>
+
+
+                <!-- WARNING -->
+
+                <div class="warning-box">
+
+                    <div class="warning-title">
+                        ⚠️ IMPORTANT / አስፈላጊ
+                    </div>
+
+                    <p>
+                        <strong>English:</strong>
+                        You can submit the registration even if you
+                        did not upload the Student Photo or Payment
+                        Receipt on the website.
+                    </p>
+
+                    <p>
+                        After saving, Telegram will open directly in
+                        Alvin's chat <strong style="color:#d4af37;">
+                        @Alven91</strong> with your registration
+                        information prepared as a message draft.
+                    </p>
+
+                    <p>
+                        <strong>Before pressing SEND:</strong>
+                        attach BOTH the Student Photo and the Payment
+                        Receipt Photo in Telegram.
+                    </p>
+
+                    <p>
+                        <strong>አማርኛ:</strong>
+                        Website ላይ Student Photo ወይም Payment Receipt
+                        ሳይጫኑም registration መላክ ይችላሉ።
+                    </p>
+
+                    <p>
+                        ከዚያ Telegram በቀጥታ ወደ Alvin
+                        <strong style="color:#d4af37;">
+                        @Alven91</strong> chat ይከፈታል፣
+                        የምዝገባ መረጃውም draft ሆኖ ይዘጋጃል።
+                    </p>
+
+                    <p>
+                        <strong>
+                            SEND ከመጫንዎ በፊት ሁለቱንም ፎቶዎች
+                            ያያይዙ።
+                        </strong>
+                    </p>
+
+                    <div class="warning-note">
+
+                        ⚠️ Both photos are required for approval.
+                        If either the Student Photo or Payment Receipt
+                        is missing in Telegram, Alvin will reject the
+                        registration.
+
+                        <br><br>
+
+                        ⚠️ ሁለቱም ፎቶዎች ለማጽደቅ ያስፈልጋሉ።
+                        Student Photo ወይም Payment Receipt አንዱ
+                        ከጎደለ Alvin ምዝገባውን REJECT ያደርጋል።
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <div class="submit-area">
+
+                    <button
+                        type="submit"
+                        class="submit-btn"
+                        id="submitBtn">
+
+                        SUBMIT REGISTRATION
+
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <!-- TELEGRAM SEND -->
+
+            <div
+                id="telegramSendBox"
+                class="telegram-send">
+
+                <h3>
+                    Registration Saved ✓
+                </h3>
+
+                <p>
+
+                    <strong>English:</strong><br>
+
+                    Your registration information is ready.
+
+                    Tap the button below to open
+                    <strong style="color:#d4af37;">
+                        Alvin's Telegram chat
+                    </strong>
+                    directly.
+
+                    <br><br>
+
+                    The registration information will appear
+                    as a draft message.
+
+                    <br><br>
+
+                    ⚠️ Before pressing SEND, attach:
+
+                    <br>
+                    📷 Student Photo
+                    <br>
+                    🧾 Payment Receipt Photo
+
+                    <br><br>
+
+                    If either photo is missing,
+                    Alvin will reject the registration.
+
+                    <br><br>
+
+                    <strong>አማርኛ:</strong><br>
+
+                    የምዝገባ መረጃዎ ተዘጋጅቷል።
+
+                    ከታች ያለውን ቁልፍ በመንካት
+                    በቀጥታ የAlvin
+                    <strong style="color:#d4af37;">
+                        @Alven91
+                    </strong>
+                    Telegram chat ይከፈታል።
+
+                    <br><br>
+
+                    የምዝገባ መረጃው draft ሆኖ ይገባል።
+
+                    <br><br>
+
+                    📷 Student Photo ያያይዙ።
+                    <br>
+                    🧾 Payment Receipt Photo ያያይዙ።
+
+                    <br><br>
+
+                    አንዱ ፎቶ ከጎደለ Alvin ምዝገባውን
+                    REJECT ያደርጋል።
+
+                    <br><br>
+
+                    ⚠️ Registration is not confirmed until Alvin
+                    approves it.
+
+                </p>
+
+                <button
+                    class="telegram-btn"
+                    id="telegramSendBtn"
+                    onclick="sendRegistrationToTelegram()">
+
+                    ✈️ OPEN ALVIN TELEGRAM
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DASHBOARD LOGIN ================= -->
+
+<section class="page" id="dashboardLogin">
+
+    <div class="container">
+
+        <div class="section-title">
+            <h2>PRIVATE DASHBOARD</h2>
+            <p>ALVIN administration area</p>
+        </div>
+
+        <div class="login-card">
+
+            <h3>ALVIN LOGIN</h3>
+
+            <label>
+                Dashboard Password
+            </label>
+
+            <input
+                id="adminPassword"
+                type="password"
+                placeholder="Enter password">
+
+            <button
+                class="gold-btn"
+                style="width:100%;"
+                onclick="loginAdmin()">
+
+                LOGIN
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<section class="page" id="dashboardPage">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>ALVIN DASHBOARD</h2>
+
+            <p>
+                Online student registrations
+            </p>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="stat">
+                Total
+                <strong id="totalCount">0</strong>
+            </div>
+
+            <div class="stat">
+                Pending
+                <strong id="pendingCount">0</strong>
+            </div>
+
+            <div class="stat">
+                Approved
+                <strong id="approvedCount">0</strong>
+            </div>
+
+        </div>
+
+        <div class="admin-actions">
+
+            <button
+                class="dark-btn"
+                onclick="renderDashboard()">
+                🔄 Refresh
+            </button>
+
+            <button
+                class="dark-btn"
+                onclick="logoutAdmin()">
+                Logout
+            </button>
+
+        </div>
+
+        <div id="studentList"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MODAL ================= -->
+
+<div class="modal" id="warningModal">
+
+    <div class="modal-card">
+
+        <h3>
+            ⚠️ IMPORTANT / አስፈላጊ
+        </h3>
+
+        <p>
+            <strong>English:</strong><br>
+
+            You can submit your registration even if you
+            did not upload photos on the website.
+
+            <br><br>
+
+            After pressing OK, your registration will be saved.
+            Telegram will open directly in Alvin's chat
+            <strong style="color:#d4af37;">
+                @Alven91
+            </strong>
+            with the registration information prepared as a draft.
+
+        </p>
+
+        <p style="color:#d4af37;font-weight:bold;">
+
+            ⚠️ BEFORE PRESSING SEND:
+
+        </p>
+
+        <p>
+
+            📷 Attach the <strong>Student Photo</strong>.
+            <br>
+
+            🧾 Attach the <strong>Payment Receipt Photo</strong>.
+            <br><br>
+
+            Then check the information and press
+            <strong>SEND</strong>.
+
+        </p>
+
+        <p>
+
+            <strong>አማርኛ:</strong><br>
+
+            Website ላይ ፎቶ ባይጫኑም ምዝገባውን
+            Submit ማድረግ ይችላሉ።
+
+            <br><br>
+
+            OK ከተጫኑ በኋላ ምዝገባዎ ይቀመጣል።
+            Telegram በቀጥታ የAlvin
+            <strong style="color:#d4af37;">
+                @Alven91
+            </strong>
+            chat ይከፍታል።
+            የምዝገባ መረጃውም draft ሆኖ ይገባል።
+
+        </p>
+
+        <p style="color:#d4af37;font-size:12px;">
+
+            ⚠️ Both photos are required for approval.
+            If either photo is missing in Telegram,
+            Alvin will reject the registration.
+
+            <br><br>
+
+            ⚠️ ሁለቱም ፎቶዎች ለማጽደቅ ያስፈልጋሉ።
+            አንዱ ፎቶ ከጎደለ Alvin ምዝገባውን
+            REJECT ያደርጋል።
+
+        </p>
+
+        <div class="modal-actions">
+
+            <button
+                class="dark-btn"
+                onclick="closeWarning()">
+                CANCEL
+            </button>
+
+            <button
+                class="ok-btn"
+                onclick="confirmSubmit()">
+                OK
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= BOTTOM NAV ================= -->
+
+<div class="bottom-nav">
+
+    <div class="bottom-inner">
+
+        <button
+            id="backBtn"
+            onclick="previousPage()">
+            ← BACK
+        </button>
+
+        <button
+            id="nextBtn"
+            onclick="nextPage()">
+            NEXT →
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="toast" class="toast"></div>
+
+
+<script>
+
+/* =========================================================
+   PAGE SYSTEM
+========================================================= */
+
+const pages = [
+    "home",
+    "academy",
+    "charity",
+    "leader",
+    "about",
+    "donate",
+    "contact",
+    "register",
+    "dashboardLogin",
+    "dashboardPage"
+];
+
+let currentPage = 0;
+
+function showPage(id, navButton){
+
+    const index = pages.indexOf(id);
+
+    if(index === -1) return;
+
+    currentPage = index;
+
+    document.querySelectorAll(".page").forEach(function(page){
+        page.classList.remove("active");
+    });
+
+    const target = document.getElementById(id);
+
+    if(target){
+        target.classList.add("active");
+    }
+
+    document.querySelectorAll(".nav-links button").forEach(function(btn){
+        btn.classList.remove("active");
+    });
+
+    if(navButton){
+        navButton.classList.add("active");
+    }
+
+    updateBottomButtons();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+function nextPage(){
+
+    if(currentPage < pages.length - 1){
+        currentPage++;
+        showPage(pages[currentPage]);
+    }
+
+}
+
+function previousPage(){
+
+    if(currentPage > 0){
+        currentPage--;
+        showPage(pages[currentPage]);
+    }
+
+}
+
+function updateBottomButtons(){
+
+    const back = document.getElementById("backBtn");
+    const next = document.getElementById("nextBtn");
+
+    back.disabled = currentPage === 0;
+    next.disabled = currentPage === pages.length - 1;
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(message){
+
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.style.display = "block";
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer = setTimeout(function(){
+        toast.style.display = "none";
+    },3500);
+
+}
+
+
+/* =========================================================
+   PAYMENT AMOUNT
+========================================================= */
+
+document.getElementById("paymentType").addEventListener(
+    "change",
+    function(){
+
+        const amount = document.getElementById("amount");
+
+        if(this.value === "first"){
+            amount.value = "900";
+        }
+        else if(this.value === "monthly"){
+            amount.value = "800";
+        }
+        else{
+            amount.value = "";
+        }
+
+    }
+);
+
+
+/* =========================================================
+   IMAGE PREVIEW
+========================================================= */
+
+function setupPreview(inputId, previewId, nameId){
+
+    const input = document.getElementById(inputId);
+    const preview = document.getElementById(previewId);
+    const name = document.getElementById(nameId);
+
+    input.addEventListener("change",function(){
+
+        const file = this.files[0];
+
+        if(!file){
+            preview.style.display = "none";
+            name.textContent = "";
+            return;
+        }
+
+        name.textContent = file.name;
+
+        const reader = new FileReader();
+
+        reader.onload = function(e){
+
+            preview.src = e.target.result;
+            preview.style.display = "block";
+
+        };
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
+
+setupPreview(
+    "studentPhoto",
+    "studentPreview",
+    "studentFileName"
+);
+
+setupPreview(
+    "receipt",
+    "receiptPreview",
+    "receiptFileName"
+);
+
+
+/* =========================================================
+   DATA
+========================================================= */
+
+let lastRegistration = null;
+let lastStudentPhotoFile = null;
+let lastReceiptFile = null;
+
+
+/* =========================================================
+   IMAGE COMPRESSION
+========================================================= */
+
+function compressImage(file, maxWidth = 900, quality = 0.72){
+
+    return new Promise(function(resolve,reject){
+
+        /* PHOTO IS OPTIONAL */
+
+        if(!file){
+            resolve("");
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function(event){
+
+            const img = new Image();
+
+            img.onload = function(){
+
+                let width = img.width;
+                let height = img.height;
+
+                if(width > maxWidth){
+
+                    height = Math.round(
+                        height * maxWidth / width
+                    );
+
+                    width = maxWidth;
+
+                }
+
+                const canvas = document.createElement("canvas");
+
+                canvas.width = width;
+                canvas.height = height;
+
+                const ctx = canvas.getContext("2d");
+
+                ctx.drawImage(
+                    img,
+                    0,
+                    0,
+                    width,
+                    height
+                );
+
+                resolve(
+                    canvas.toDataURL(
+                        "image/jpeg",
+                        quality
+                    )
+                );
+
+            };
+
+            img.onerror = reject;
+
+            img.src = event.target.result;
+
+        };
+
+        reader.onerror = reject;
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
+
+
+/* =========================================================
+   SUBMIT REGISTRATION
+========================================================= */
+
+document.getElementById("registrationForm")
+.addEventListener("submit",function(event){
+
+    event.preventDefault();
+
+    const paymentType =
+        document.getElementById("paymentType").value;
+
+    const amount =
+        Number(document.getElementById("amount").value);
+
+    const studentPhoto =
+        document.getElementById("studentPhoto").files[0] || null;
+
+    const receipt =
+        document.getElementById("receipt").files[0] || null;
+
+    if(!paymentType){
+
+        alert(
+            "Please select a payment type.\n\n" +
+            "እባክዎ የክፍያ አይነት ይምረጡ።"
+        );
+
+        return;
+    }
+
+    if(paymentType === "first" && amount !== 900){
+
+        alert(
+            "First Month must be exactly 900 Birr."
+        );
+
+        return;
+    }
+
+    if(paymentType === "monthly" && amount !== 800){
+
+        alert(
+            "Monthly payment must be exactly 800 Birr."
+        );
+
+        return;
+    }
+
+    /*
+       Student Photo and Receipt are OPTIONAL
+       on the website.
+    */
+
+    lastStudentPhotoFile = studentPhoto;
+    lastReceiptFile = receipt;
+
+    openWarning();
+
+});
+
+
+/* =========================================================
+   WARNING MODAL
+========================================================= */
+
+function openWarning(){
+
+    document
+        .getElementById("warningModal")
+        .classList.add("show");
+
+}
+
+function closeWarning(){
+
+    document
+        .getElementById("warningModal")
+        .classList.remove("show");
+
+}
+
+
+/* =========================================================
+   CONFIRM SUBMIT
+========================================================= */
+
+async function confirmSubmit(){
+
+    closeWarning();
+
+    const submitBtn =
+        document.getElementById("submitBtn");
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "SAVING...";
+
+    try{
+
+        /*
+           These functions now safely accept
+           missing photos.
+        */
+
+        const studentPhotoData =
+            await compressImage(
+                lastStudentPhotoFile
+            );
+
+        const receiptData =
+            await compressImage(
+                lastReceiptFile
+            );
+
+        const now = new Date();
+
+        const id =
+            "MARVEL-" +
+            now.getFullYear() +
+            "-" +
+            Date.now().toString().slice(-6);
+
+        const registration = {
+
+            id:id,
+
+            date:now.toLocaleString(),
+
+            studentName:
+                document.getElementById("studentName").value.trim(),
+
+            age:
+                document.getElementById("age").value,
+
+            phone:
+                document.getElementById("phone").value.trim(),
+
+            course:
+                document.getElementById("course").value,
+
+            paymentType:
+                document.getElementById("paymentType").value,
+
+            amount:
+                document.getElementById("amount").value,
+
+            senderName:
+                document.getElementById("senderName").value.trim(),
+
+            transaction:
+                document.getElementById("transaction").value.trim(),
+
+            emergency:
+                document.getElementById("emergency").value.trim(),
+
+            message:
+                document.getElementById("message").value.trim(),
+
+            studentPhoto:
+                studentPhotoData,
+
+            receipt:
+                receiptData,
+
+            studentPhotoName:
+                lastStudentPhotoFile
+                    ? lastStudentPhotoFile.name
+                    : "",
+
+            receiptName:
+                lastReceiptFile
+                    ? lastReceiptFile.name
+                    : "",
+
+            status:"Pending"
+
+        };
+
+        let students = [];
+
+        try{
+
+            students =
+                JSON.parse(
+                    localStorage.getItem("marvelStudents")
+                ) || [];
+
+        }
+        catch(error){
+
+            students = [];
+
+        }
+
+        students.push(registration);
+
+        localStorage.setItem(
+            "marvelStudents",
+            JSON.stringify(students)
+        );
+
+        lastRegistration = registration;
+
+        document.getElementById(
+            "telegramSendBox"
+        ).style.display = "block";
+
+        showToast(
+            "Registration saved. Open Alvin's Telegram chat."
+        );
+
+        document.getElementById(
+            "telegramSendBox"
+        ).scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+        submitBtn.textContent =
+            "REGISTRATION SAVED ✓";
+
+        submitBtn.disabled = true;
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "Could not save the registration.\n\n" +
+            "ምዝገባውን ማስቀመጥ አልተቻለም።"
+        );
+
+        submitBtn.disabled = false;
+
+        submitBtn.textContent =
+            "SUBMIT REGISTRATION";
+
+    }
+
+}
+
+
+/* =========================================================
+   DIRECT TELEGRAM — ALVIN
+========================================================= */
+
+function sendRegistrationToTelegram(){
+
+    if(!lastRegistration){
+
+        alert(
+            "Please submit the registration first."
+        );
+
+        return;
+    }
+
+    const btn =
+        document.getElementById("telegramSendBtn");
+
+    btn.disabled = true;
+    btn.textContent = "OPENING TELEGRAM...";
+
+    const r = lastRegistration;
+
+    const studentPhotoStatus =
+        r.studentPhoto
+            ? "Uploaded on website"
+            : "Not uploaded on website";
+
+    const receiptStatus =
+        r.receipt
+            ? "Uploaded on website"
+            : "Not uploaded on website";
+
+
+    const text =
+`MARVEL LANGUAGE ACADEMY & CHARITY
+
+NEW STUDENT REGISTRATION
+━━━━━━━━━━━━━━━━━━
+
+⚠️ IMPORTANT — BEFORE SEND
+
+📷 STUDENT PHOTO MUST BE ATTACHED
+🧾 PAYMENT RECEIPT PHOTO MUST BE ATTACHED
+
+If either photo is missing in Telegram,
+ALVIN MUST REJECT THE REGISTRATION.
+
+━━━━━━━━━━━━━━━━━━
+
+Registration ID: ${r.id}
+Date: ${r.date}
+
+STUDENT INFORMATION
+
+Name: ${r.studentName}
+Age: ${r.age}
+Phone: ${r.phone}
+Course: ${r.course}
+
+PAYMENT INFORMATION
+
+Payment Type: ${r.paymentType === "first"
+    ? "First Month — 900 Birr"
+    : "Monthly — 800 Birr"}
+
+Amount: ${r.amount} Birr
+Sender Account Name: ${r.senderName}
+Transaction Number: ${r.transaction}
+
+EMERGENCY CONTACT
+
+${r.emergency}
+
+ADDITIONAL MESSAGE
+
+${r.message || "None"}
+
+━━━━━━━━━━━━━━━━━━
+
+WEBSITE PHOTO STATUS
+
+Student Photo:
+${studentPhotoStatus}
+
+Payment Receipt:
+${receiptStatus}
+
+━━━━━━━━━━━━━━━━━━
+
+TELEGRAM REQUIREMENT
+
+📷 Attach Student Photo
+🧾 Attach Payment Receipt Photo
+
+Then check the registration information
+and press SEND.
+
+⚠️ Both photos are required for approval.
+If either photo is missing, Alvin will
+REJECT the registration.
+
+STATUS: PENDING
+
+━━━━━━━━━━━━━━━━━━
+
+MARVEL Language Academy & Charity`;
+
+
+    /*
+       Direct Telegram Android application deep link.
+
+       This does NOT use navigator.share(),
+       so there is no Android "Choose another app"
+       sharing screen.
+    */
+
+    const telegramURL =
+        "tg://resolve?domain=Alven91&text=" +
+        encodeURIComponent(text);
+
+
+    try{
+
+        window.location.href = telegramURL;
+
+        showToast(
+            "Opening Alvin's Telegram chat..."
+        );
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        alert(
+            "Could not open Telegram.\n\n" +
+            "እባክዎ Telegram በስልክዎ ላይ መኖሩን ያረጋግጡ።"
+        );
+
+    }
+
+
+    setTimeout(function(){
+
+        btn.disabled = false;
+
+        btn.textContent =
+            "✈️ OPEN ALVIN TELEGRAM";
+
+    },4000);
+
+}
+
+
+/* =========================================================
+   ADMIN LOGIN
+========================================================= */
+
+const ADMIN_PASSWORD = "MARVEL 23";
+
+function loginAdmin(){
+
+    const password =
+        document.getElementById(
+            "adminPassword"
+        ).value;
+
+    if(password === ADMIN_PASSWORD){
+
+        sessionStorage.setItem(
+            "marvelAdmin",
+            "true"
+        );
+
+        showPage("dashboardPage");
+
+        renderDashboard();
+
+        document.getElementById(
+            "adminPassword"
+        ).value = "";
+
+    }
+    else{
+
+        alert(
+            "Incorrect password."
+        );
+
+    }
+
+}
+
+function logoutAdmin(){
+
+    sessionStorage.removeItem(
+        "marvelAdmin"
+    );
+
+    showPage("dashboardLogin");
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+function getStudents(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem(
+                "marvelStudents"
+            )
+        ) || [];
+
+    }
+    catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+function saveStudents(students){
+
+    localStorage.setItem(
+        "marvelStudents",
+        JSON.stringify(students)
+    );
+
+}
+
+
+function renderDashboard(){
+
+    if(
+        sessionStorage.getItem(
+            "marvelAdmin"
+        ) !== "true"
+    ){
+
+        showPage("dashboardLogin");
+
+        return;
+
+    }
+
+    const students = getStudents();
+
+    const total =
+        students.length;
+
+    const pending =
+        students.filter(
+            s => s.status === "Pending"
+        ).length;
+
+    const approved =
+        students.filter(
+            s => s.status === "Approved"
+        ).length;
+
+    document.getElementById(
+        "totalCount"
+    ).textContent = total;
+
+    document.getElementById(
+        "pendingCount"
+    ).textContent = pending;
+
+    document.getElementById(
+        "approvedCount"
+    ).textContent = approved;
+
+    const list =
+        document.getElementById(
+            "studentList"
+        );
+
+    if(students.length === 0){
+
+        list.innerHTML =
+            '<div class="empty">No registrations yet.</div>';
+
+        return;
+
+    }
+
+    list.innerHTML = "";
+
+    students
+        .slice()
+        .reverse()
+        .forEach(function(student){
+
+            const card =
+                document.createElement("div");
+
+            card.className =
+                "student-card " +
+                String(student.status).toLowerCase();
+
+            card.innerHTML = `
+
+                <div class="student-head">
+
+                    <div>
+                        <h3>${escapeHTML(student.studentName)}</h3>
+                        <p style="font-size:11px;">
+                            ${escapeHTML(student.id)}
+                            •
+                            ${escapeHTML(student.date)}
+                        </p>
+                    </div>
+
+                    <div class="status ${String(student.status).toLowerCase()}">
+                        ${escapeHTML(student.status)}
+                    </div>
+
+                </div>
+
+                <div class="student-info">
+
+                    <div>
+                        <strong>Name:</strong>
+                        ${escapeHTML(student.studentName)}
+                    </div>
+
+                    <div>
+                        <strong>Age:</strong>
+                        ${escapeHTML(student.age)}
+                    </div>
+
+                    <div>
+                        <strong>Phone:</strong>
+                        ${escapeHTML(student.phone)}
+                    </div>
+
+                    <div>
+                        <strong>Course:</strong>
+                        ${escapeHTML(student.course)}
+                    </div>
+
+                    <div>
+                        <strong>Payment:</strong>
+                        ${escapeHTML(student.amount)} Birr
+                    </div>
+
+                    <div>
+                        <strong>Account:</strong>
+                        ${escapeHTML(student.senderName)}
+                    </div>
+
+                    <div>
+                        <strong>Transaction:</strong>
+                        ${escapeHTML(student.transaction)}
+                    </div>
+
+                    <div>
+                        <strong>Emergency:</strong>
+                        ${escapeHTML(student.emergency)}
+                    </div>
+
+                </div>
+
+                ${
+                    student.message
+                    ?
+                    `<p style="margin-top:12px;font-size:12px;">
+                        <strong style="color:#d4af37;">
+                            Message:
+                        </strong>
+                        ${escapeHTML(student.message)}
+                    </p>`
+                    :
+                    ""
+                }
+
+                <div class="admin-photos">
+
+                    <div>
+
+                        <p style="font-size:11px;margin-bottom:6px;">
+                            Student Photo
+                        </p>
+
+                        ${
+                            student.studentPhoto
+                            ?
+                            `<img
+                                src="${student.studentPhoto}"
+                                alt="Student Photo">`
+                            :
+                            `<div style="
+                                background:#050505;
+                                border:1px dashed #444;
+                                border-radius:10px;
+                                padding:50px 10px;
+                                text-align:center;
+                                color:#777;
+                                font-size:12px;">
+                                No Student Photo
+                            </div>`
+                        }
+
+                    </div>
+
+                    <div>
+
+                        <p style="font-size:11px;margin-bottom:6px;">
+                            Payment Receipt
+                        </p>
+
+                        ${
+                            student.receipt
+                            ?
+                            `<img
+                                src="${student.receipt}"
+                                alt="Payment Receipt">`
+                            :
+                            `<div style="
+                                background:#050505;
+                                border:1px dashed #444;
+                                border-radius:10px;
+                                padding:50px 10px;
+                                text-align:center;
+                                color:#777;
+                                font-size:12px;">
+                                No Payment Receipt
+                            </div>`
+                        }
+
+                    </div>
+
+                </div>
+
+                <div class="admin-buttons">
+
+                    <button
+                        class="approve"
+                        onclick="changeStatus('${student.id}','Approved')">
+                        ✓ APPROVE
+                    </button>
+
+                    <button
+                        onclick="changeStatus('${student.id}','Pending')">
+                        ⏳ PENDING
+                    </button>
+
+                    <button
+                        class="reject"
+                        onclick="changeStatus('${student.id}','Rejected')">
+                        ✕ REJECT
+                    </button>
+
+                    <button
+                        onclick="deleteStudent('${student.id}')">
+                        🗑 DELETE
+                    </button>
+
+                </div>
+
+            `;
+
+            list.appendChild(card);
+
+        });
+
+}
+
+
+function changeStatus(id,status){
+
+    const students =
+        getStudents();
+
+    const student =
+        students.find(
+            s => s.id === id
+        );
+
+    if(!student) return;
+
+    student.status = status;
+
+    saveStudents(students);
+
+    renderDashboard();
+
+    showToast(
+        "Registration status changed to " + status
+    );
+
+}
+
+
+function deleteStudent(id){
+
+    if(
+        !confirm(
+            "Delete this registration?"
+        )
+    ){
+
+        return;
+
+    }
+
+    const students =
+        getStudents()
+        .filter(
+            s => s.id !== id
+        );
+
+    saveStudents(students);
+
+    renderDashboard();
+
+}
+
+
+/* =========================================================
+   SECURITY FOR DASHBOARD DISPLAY
+========================================================= */
+
+function escapeHTML(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   DASHBOARD AUTO CHECK
+========================================================= */
+
+document
+    .getElementById("adminPassword")
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+                loginAdmin();
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+updateBottomButtons();
+
+</script>
+
+</body>
+</html>
